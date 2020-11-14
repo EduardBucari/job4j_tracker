@@ -2,7 +2,6 @@ package ru.job4j.oop;
 
 public class Jukebox {
     public void music(int position) {
-        position = 2;
         if (position == 1) {
             System.out.println("Пусть бегут неуклюже");
         }
@@ -16,6 +15,8 @@ public class Jukebox {
 
     public static void main(String[] args) {
         Student john = new Student();
-        john.music();
+        john.music(1);
+        john.music(2);
+        john.music(3);
     }
 }
