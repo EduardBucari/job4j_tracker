@@ -1,4 +1,4 @@
-package ru.job4j.oop;
+/*package ru.job4j.oop;
 
 public class Triangle {
     private Point first;
@@ -31,3 +31,4 @@ public class Triangle {
         return rsl;
     }
 }
+*/
