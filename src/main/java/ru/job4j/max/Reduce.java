@@ -7,7 +7,7 @@ public class Reduce {
         array = array; // я думаю здесь ошибка, т.к.
                        // есть две переменные с одинаковым именем внутри метода.
                        // но как исправить, пока не понимаю.
-    }                   //
+    }
 
     public void print() {
         for (int index = 0; index < array.length; index++) {
