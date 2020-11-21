@@ -1,4 +1,4 @@
-/*package ru.job4j.oop;
+package ru.job4j.oop;
 
 public class Triangle {
     private Point first;
@@ -21,9 +21,9 @@ public class Triangle {
 
     public double area() {
         double rsl = -1;
-        double ab = first.distance(second);
-        double ac = first.distance(third);
-        double bc = second.distance(third);
+        double ab = first.distance3d(second);
+        double ac = first.distance3d(third);
+        double bc = second.distance3d(third);
         double p = period(ab, ac, bc);
         if (this.exist(ab, ac, bc)) {
             rsl = Math.sqrt(p * (p - ab) * (p - bc) * (p - ac));
@@ -31,4 +31,3 @@ public class Triangle {
         return rsl;
     }
 }
-*/
