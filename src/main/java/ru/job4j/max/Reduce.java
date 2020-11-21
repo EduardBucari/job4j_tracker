@@ -4,10 +4,11 @@ public class Reduce {
     private int[] array;
 
     public void to(int[] array) {
-        array = array; // я думаю здесь ошибка, т.к.
+        this.array = array; // я думаю здесь ошибка (array = array;), т.к.
                        // есть две переменные с одинаковым именем внутри метода.
-                       // но как исправить, пока не понимаю.
-    }                   //
+    }                   //Для решения этой проблемы необходимо использовать ключевое слово this,
+                        // которое в данном случае укажет, что нужно вызывать переменную не метода to,
+                        //а класса Reduce
 
     public void print() {
         for (int index = 0; index < array.length; index++) {
