@@ -7,6 +7,18 @@ public class Item {
     private int id;
     private String name;
 
+    public Item() { // Конструктор без параметров.
+
+    }
+
+    public Item(int id) { // конструктор с параметром id
+
+    }
+
+    public Item(int id, String name) {  // конструктор с параметрами id и name
+
+    }
+
     public int getId() {
         return id;
     }
