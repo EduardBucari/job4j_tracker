@@ -13,11 +13,12 @@ public class Item {
     }
 
     public Item(int id) { // конструктор с параметром id
-
+        this.id = id;     // инициализируем поля, а иначе они ничего не делают.
     }
 
     public Item(int id, String name) {  // конструктор с параметрами id и name
-
+        this.id = id;
+        this.name = name;
     }
 
     public int getId() {
