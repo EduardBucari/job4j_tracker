@@ -2,37 +2,28 @@ package ru.job4j.oop.inheritance_Jobs;
 
 public class Programmer extends Engineer {
     private String knowledgeOfTheProgrammingLanguage;
-    private String knowledgeOfFrameworks;
-    private String additionalKnowledge;
 
-    public Programmer(String knowledgeOfTheProgrammingLanguage, String knowledgeOfFrameworks,
-                      String additionalKnowledge) {
+
+    public Programmer(String name, String surname, String birthday, String education,
+                      String specializationCertificateID,
+                      String knowledgeOfTheProgrammingLanguage) {
+        super(name, surname, birthday, education, specializationCertificateID);
         this.knowledgeOfTheProgrammingLanguage = knowledgeOfTheProgrammingLanguage;
-        this.knowledgeOfFrameworks = knowledgeOfFrameworks;
-        this.additionalKnowledge = additionalKnowledge;
     }
 
     public String getKnowledgeOfTheProgrammingLanguage() {
         return knowledgeOfTheProgrammingLanguage;
     }
 
-    public String getKnowledgeOfFrameworks() {
-        return knowledgeOfFrameworks;
-    }
-
-    public String getAdditionalKnowledge() {
-        return additionalKnowledge;
-    }
-
     public static void main(String[] args) {
-        Programmer programmer = new Programmer("Java",
-                "Spring", "Hibernate");
+        Programmer programmer = new Programmer("Tony","Stark", "11.03.63",
+                "higher", "IronMan 01",
+                "Java");
         programmer.getName();
         programmer.getSurname();
         programmer.getBirthday();
         programmer.getEducation();
         programmer.getSpecializationCertificateID();
-        programmer.getLengthOfPractice();
-        programmer.getNameOfTheTechnicalUniversity();
+
     }
 }

@@ -2,31 +2,20 @@ package ru.job4j.oop.inheritance_Jobs;
 
 public class Engineer extends Profession {
     private String specializationCertificateID;
-    private String lengthOfPractice;
-    private String nameOfTheTechnicalUniversity;
 
-    public Engineer(String specializationCertificateID, String lengthOfPractice,
-                    String nameOfTheTechnicalUniversity) {
+    public Engineer(String name, String surname, String birthday, String education,
+                    String specializationCertificateID) {
+        super(name, surname, birthday, education);
         this.specializationCertificateID = specializationCertificateID;
-        this.lengthOfPractice = lengthOfPractice;
-        this.nameOfTheTechnicalUniversity = nameOfTheTechnicalUniversity;
-
     }
 
     public String getSpecializationCertificateID() {
         return specializationCertificateID;
     }
 
-    public String getLengthOfPractice() {
-        return lengthOfPractice;
-    }
-
-    public String getNameOfTheTechnicalUniversity() {
-        return nameOfTheTechnicalUniversity;
-    }
     public static void main(String[] args) {
-        Engineer engineer = new Engineer("electronic", "2 years",
-                "London Technical University");
+        Engineer engineer = new Engineer("Peter", "Parker","5.04.99",
+                "technical", "electronic452-VD");
         engineer.getName();
         engineer.getSurname();
         engineer.getBirthday();

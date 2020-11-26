@@ -1,4 +1,5 @@
 package ru.job4j.oop.inheritance_Jobs;
+
 public class Profession {
 
         private String name;

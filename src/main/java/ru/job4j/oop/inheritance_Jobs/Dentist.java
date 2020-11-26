@@ -2,36 +2,24 @@ package ru.job4j.oop.inheritance_Jobs;
 
 public class Dentist extends Doctor {
     private String typeOfDentistry;
-    private String typesOfProsthetics;
-    private String nameOfDentalClinic;
 
-    public Dentist(String typeOfDentistry, String typesOfProsthetics, String nameOfDentalClinic) {
+    public Dentist(String name, String surname, String birthday, String education,
+                   String diplomaID, String typeOfDentistry) {
+        super(name, surname, birthday, education, diplomaID);
         this.typeOfDentistry = typeOfDentistry;
-        this.typesOfProsthetics = typesOfProsthetics;
-        this.nameOfDentalClinic = nameOfDentalClinic;
     }
 
     public String getTypeOfDentistry() {
         return typeOfDentistry;
     }
 
-    public String getTypesOfProsthetics() {
-        return typesOfProsthetics;
-    }
-
-    public String getNameOfDentalClinic() {
-        return nameOfDentalClinic;
-    }
-
     public static void main(String[] args) {
-        Dentist dentist = new Dentist("Kids dentistry", "Standard  SGP",
-                "L.A. DENTAL");
+        Dentist dentist = new Dentist("Hannibal", "Lecter", "23.04.63",
+                "higher", "drtv-6397", "Adult dentistry");
         dentist.getName();
         dentist.getSurname();
         dentist.getBirthday();
         dentist.getEducation();
         dentist.getDiplomaID();
-        dentist.getLengthOfService();
-        dentist.getNameOfTheMedicalUniversity();
     }
 }
