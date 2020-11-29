@@ -7,7 +7,7 @@ public class StartUI {
 
     public static void main(String[] args) {
 
-        Item startItem = new Item();
+        Item startItem = new Item(1103, "David");
         LocalDateTime created = startItem.getCreated();
 
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MMMM-EEEE-yyyy HH:mm:ss");

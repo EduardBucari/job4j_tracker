@@ -8,13 +8,13 @@ public class Item {
     private String name;
     private LocalDateTime created = LocalDateTime.now();
 
-    public Item() { // Конструктор без параметров.
+   // public Item() { // Конструктор без параметров.
 
-    }
+  //  }
 
-    public Item(int id) { // конструктор с параметром id
-        this.id = id;     // инициализируем поля, а иначе они ничего не делают.
-    }
+   // public Item(int id) { // конструктор с параметром id
+   //     this.id = id;     // инициализируем поля, а иначе они ничего не делают.
+  //  }
 
     public Item(int id, String name) {  // конструктор с параметрами id и name
         this.id = id;
@@ -39,5 +39,14 @@ public class Item {
 
     public LocalDateTime getCreated() {
         return created;
+    }
+
+    @Override
+    public String toString() {
+        return "Item{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", created=" + created +
+                '}';
     }
 }
