@@ -4,17 +4,16 @@ public class Config {
     private String name;
     private int position;
     private String[] properties;
-    private String key;
 
-    private Config(String name) {
+    public Config(String name) {
         this.name = name;
     }
 
-    void print() {
+   public void print() {
         System.out.println(position);
     }
 
-    private String getProperty() {
+    public String getProperty(String key) {
         return search(key);
     }
 
