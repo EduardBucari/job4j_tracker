@@ -9,6 +9,7 @@ public class StartUI {
 
         Tracker tracker = new Tracker();
         tracker.add(Item);
+        tracker.findById(Item);
 
         Item startItem = new Item(1103, "David");
         LocalDateTime created = startItem.getCreated();
@@ -19,7 +20,7 @@ public class StartUI {
 
         System.out.println(startItem);
 
-        System.out.println();
+        System.out.println(Item);
     }
 }
 
