@@ -9,22 +9,20 @@ public class StartUI {
 
         Tracker tracker = new Tracker();
 
-        tracker.add(item);
-        tracker.findById(Item);
-
         Item item = new Item (1, "test");
 
-        Item startItem = new Item(1103, "David");
-        LocalDateTime created = startItem.getCreated();
+      //  Item startItem = new Item(1103, "David");
+     //   LocalDateTime created = startItem.getCreated();
 
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MMMM-EEEE-yyyy HH:mm:ss");
-        String createdFormat = created.format(formatter);
-        System.out.println("Текущие дата и время после форматирования: " + createdFormat);
+     //   DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MMMM-EEEE-yyyy HH:mm:ss");
+     //   String createdFormat = created.format(formatter);
+     //   System.out.println("Текущие дата и время после форматирования: " + createdFormat);
 
-        System.out.println(startItem);
+     //   System.out.println(startItem);
 
+        tracker.add(item);
         Item rsl = tracker.findById(1);
-        System.out.println(srl);
+        System.out.println(rsl);
     }
 }
 
