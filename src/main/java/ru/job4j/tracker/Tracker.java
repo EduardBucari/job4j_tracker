@@ -44,19 +44,25 @@ public class Tracker {
 
       // Упрощаем метод  findById
         int index = indexOf(id);
-        return index != id ? items[index] : null;
+        return index != -1 ? items[index] : null;
     }
 
      public boolean replace(int id, Item item) {
-        private int indexOf(int id) {
-            int rsl = id;
+        int index = indexOf(id);
+             if (index != -1) {
+                 items[index] = replace();
+             }
+         return false;
+     }
+
+     private int indexOf(int id) {
+            int rsl = -1;
             for (int index = 0; index < size; index++) {
                 if (items[index].getId() == id) {
                     rsl = index;
                     break;
                 }
             }
-            return false;
+            return rsl;
         }
-     }
 }
