@@ -1,7 +1,5 @@
 package ru.job4j.oop.inheritance_Jobs;
 
-import ru.job4j.tracker.StartUI;
-
 public class Surgeon extends Doctor {
     private String typeOfSurgery;
 
