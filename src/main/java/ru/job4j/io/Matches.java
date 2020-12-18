@@ -1,5 +1,7 @@
 package ru.job4j.io;
 
+import org.w3c.dom.ls.LSOutput;
+
 import java.util.Scanner;
 
 public class Matches {
@@ -8,13 +10,22 @@ public class Matches {
         int numberOfMatchesOnTheTable = 11;
 
         while (numberOfMatchesOnTheTable > 0) {
-            System.out.println("Игра началась. Вы можете взять одну, две или три спички: ");
+            System.out.println("Вы можете взять одну, две или три спички: ");
             int select = Integer.valueOf(input.nextLine());
-            if (select > 1 && select < 4) {
-                System.out.println("Player N1");
+            if (select >= 1 && select <= 3) {
+                System.out.println("Игрок N1 взял колличество спичек " + select);
                 numberOfMatchesOnTheTable = numberOfMatchesOnTheTable - select;
-                System.out.println("Player N2");
+                System.out.println("Осталось " + numberOfMatchesOnTheTable + " спичек");
+            } else {
+                System.out.println("Вы взяли не правильное колличество спичек. Повторите попытку.");
+            }
+
+            if (select >= 1 && select <= 3) {
+                System.out.println("Игрок N2 взял колличество спичек " + select);
                 numberOfMatchesOnTheTable = numberOfMatchesOnTheTable - select;
+                System.out.println("Осталось " + numberOfMatchesOnTheTable + " спичек");
+            } else {
+                System.out.println("Вы взяли не правильное колличество спичек. Повторите попытку.");
             }
         }
 
