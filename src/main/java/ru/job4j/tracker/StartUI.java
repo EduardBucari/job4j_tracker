@@ -20,15 +20,20 @@ public class StartUI {
 
             } else if (select == 1) {
                 System.out.println("=== Show all items ===");
-                System.out.print("Enter id: ");
-                System.out.println("Enter id name: ");
-                String id = scanner.nextLine();
                 tracker.findAll();
-                System.out.println();// ????????;
+                Item rsl =  ;   //Результат вызова поместить в переменную - это массив элементов класса Item;
+                System.out.println(rsl);//  Вывести в консоль все элементы массива;
 
             } else if (select == 2) {
                 System.out.println("=== Edit item ===");
-              //  tracker.replace(2, ); //  ??????
+                System.out.print("Enter id: ");
+                System.out.println("Enter id name: ");
+                String id = scanner.nextLine(); //Получить id заявки, которую мы будем изменять, через объект scanner;
+                String idName = scanner.nextLine();//Получить имя заявки на которую мы будем заменять через объект scanner;
+                Item item = new Item(2, "......"); //Создаем объект класса Item
+                tracker.replace(2, ); //Вызвать метод replace у объекта tracker
+
+
 
             } else if (select == 3) {
                 System.out.println("=== Delete item ===");
