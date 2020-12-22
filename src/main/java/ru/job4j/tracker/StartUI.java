@@ -33,7 +33,7 @@ public class StartUI {
                 Item item = new Item(id, idName); //Создаем объект класса Item
                                                  //Вызвать метод replace у объекта tracker
                 boolean rsl = tracker.replace(id, item);  //Валидация.
-                if (rsl = true) {  //если true то выводим строку об успешности операции, иначе - ошибка замены.
+                if (rsl) {  //если true то выводим строку об успешности операции, иначе - ошибка замены.
                     System.out.println("Замена заявки прошла успешно!");
                 } else {
                     System.out.println("Произошла ошибка замены заявки");
@@ -45,7 +45,7 @@ public class StartUI {
                int id = Integer.parseInt(scanner.nextLine()); // Получить id заявки, которую мы будем удалять, через объект scanner;
                                                  // Вызвать метод delete у объекта tracker, в него передать id
                boolean rsl = tracker.delete(id); //Результат работы метода delete необходимо валидировать
-                if (rsl = true) {  //если true то выводим строку об успешности операции, иначе - ошибка удаления.
+                if (rsl) {  //если true то выводим строку об успешности операции, иначе - ошибка удаления.
                     System.out.println("Удаление заявки прошло успешно!");
                 } else {
                     System.out.println("Произошла ошибка в удалении заявки!");
