@@ -12,6 +12,7 @@ public class StartUI {
        //Вместо вызова scanner.nextLine() написать input.askStr(msg), где msg - это сообщение,
             // которое вы хотели бы вывести пользователю перед его вводом.
         boolean run = true;
+        String msg = "Enter id: ";
         while (run) {
             this.showMenu();
             System.out.println("Select: ");
