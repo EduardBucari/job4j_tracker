@@ -6,7 +6,7 @@ package ru.job4j.tracker;
 //import java.util.Scanner;
 
 public class StartUI {
-// /*     //2.Вместо объявленныx переменных Scanner scanner написать Input input.
+ /*     //2.Вместо объявленныx переменных Scanner scanner написать Input input.
  //   public void init(Scanner scanner, Tracker tracker) {
         public void init(Input input, Tracker tracker) {
        //Вместо вызова scanner.nextLine() написать input.askStr(msg), где msg - это сообщение,
@@ -92,28 +92,80 @@ public class StartUI {
             } else if (select == 6) {
                 run = false;
             }
-            //  */
+              */
             //-------------------------------------------------------------------
 
             // Задание 4.2. В классе StartUI есть метод init в
             // котором содержится блок из множественного if.
             // Давайте все блоки в условии вынесем в статические методы.
 
- /*
-  public static void createItem(Input input, Tracker tracker) {
+    //  /*
+    public static void createItem(Input input, Tracker tracker) {
         System.out.println("=== Create a new Item ===");
         String name = input.askStr("Enter name: ");
         Item item = new Item(0, name);
         tracker.add(item);
     }
 
-    public static void findAllItems() {
+    public static void findAllItems(Tracker tracker) {
         System.out.println("=== Show all items ===");
-        Item[] rsl = tracker.findAll();//Результат вызова поместить в переменную - это массив элементов класса Item;
-        for (int i = 0; i <rsl.length; i++) {
-            System.out.println(rsl[i]);//  Выводим в консоль все элементы массива;
+        Item[] rsl = tracker.findAll();
+        for (int i = 0; i < rsl.length; i++) {
+            System.out.println(rsl[i]);
         }
     }
+
+    public static void replaceItem(Input input, Tracker tracker) {
+        System.out.println("=== Edit item ===");
+        int id = Integer.parseInt(input.askStr("Enter id: "));
+        String idName = input.askStr("Enter id name: ");
+        Item item = new Item(id, idName);
+        boolean rsl = tracker.replace(id, item);
+        if (rsl) {
+            System.out.println("Замена заявки прошла успешно!");
+        } else {
+            System.out.println("Произошла ошибка замены заявки");
+        }
+    }
+
+    public static void deleteItem(Input input, Tracker tracker) {
+        System.out.println("=== Delete item ===");
+        int id = Integer.parseInt(input.askStr("Enter id: "));
+        boolean rsl = tracker.delete(id);
+        if (rsl) {
+            System.out.println("Удаление заявки прошло успешно!");
+        } else {
+            System.out.println("Произошла ошибка в удалении заявки!");
+        }
+    }
+
+    public static void findItemById(Input input, Tracker tracker) {
+        System.out.println("=== Find item by Id ===");
+        int id = Integer.parseInt(input.askStr("Enter id: "));
+        Item rsl = tracker.findById(id);
+        if (rsl != null) {
+            System.out.println(rsl);
+        } else {
+            System.out.println("Заявка с таким id не найдена");
+        }
+    }
+
+    public static void findItemByName(Input input, Tracker tracker) {
+        System.out.println("=== Find items by name ===");
+        String orderNames = input.askStr("Enter order names: ");
+        Item[] rsl = tracker.findByName(orderNames);
+        if (rsl.length > 0) {
+            for (int i = 0; i < rsl.length; i++) {
+                System.out.println(rsl[i]);
+            }
+        } else {
+            System.out.println("Заявки с таким именем не найдены");
+        }
+    }
+
+
+
+
 
     public void init(Input input, Tracker tracker) {
         boolean run = true;
@@ -123,13 +175,23 @@ public class StartUI {
             if (select == 0) {
                 StartUI.createItem(input, tracker);
             } else if (select == 1) {
-                StartUI.findAllItems();
+                StartUI.findAllItems(tracker);
+            } else if (select == 2) {
+                StartUI.replaceItem(input, tracker);
+            } else if (select == 3) {
+                StartUI.deleteItem(input, tracker);
+            } else if (select == 4) {
+                StartUI.findItemById(input, tracker);
+            } else if (select == 5) {
+                StartUI.findItemByName(input, tracker);
+            } else if (select == 6) {
+                run = false;
             }
         }
 
         //-------------------------------------------------------------
-              */
-        }
+//              */
+
     }
         private void showMenu() {
             System.out.println("Menu.");
