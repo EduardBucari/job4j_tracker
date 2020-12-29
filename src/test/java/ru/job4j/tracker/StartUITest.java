@@ -34,7 +34,6 @@ public class StartUITest {
     public void whenDeleteItem() {
         Tracker tracker = new Tracker();
         Item item = new Item(1, "new item");
-        tracker.delete(1);
         String[] answers = {
                 String.valueOf(item.getId()),
         };
