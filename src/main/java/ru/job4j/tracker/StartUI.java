@@ -100,6 +100,7 @@ public class StartUI {
             // Давайте все блоки в условии вынесем в статические методы.
 
     //  /*
+
     public static void createItem(Input input, Tracker tracker) {
         System.out.println("=== Create a new Item ===");
         String name = input.askStr("Enter name: ");
@@ -161,6 +162,10 @@ public class StartUI {
         } else {
             System.out.println("Заявки с таким именем не найдены");
         }
+    }
+
+    public static void exit(Input input, Tracker tracker) {
+        System.out.println("=== Exit ===");
     }
 
 
