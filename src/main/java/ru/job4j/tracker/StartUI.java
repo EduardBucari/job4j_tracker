@@ -220,7 +220,8 @@ public class StartUI {
         Tracker tracker = new Tracker();
         //new StartUI().init(scanner, tracker);
         UserAction[] action = {
-               new CreateAction()
+               new CreateAction(),
+               new Exit() // another action;
         };
         new StartUI().init(input, tracker, action);
     }
