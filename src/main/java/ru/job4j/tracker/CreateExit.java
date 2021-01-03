@@ -8,7 +8,6 @@ public class CreateExit implements UserAction {
 
     @Override
     public boolean execute(Input input, Tracker tracker) {
-        String name = input.askStr("Exit.");
         return false;
     }
 }
