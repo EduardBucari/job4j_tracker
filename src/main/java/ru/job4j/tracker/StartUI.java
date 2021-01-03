@@ -99,7 +99,7 @@ public class StartUI {
             // котором содержится блок из множественного if.
             // Давайте все блоки в условии вынесем в статические методы.
 
-    //  /*
+    // --------------------- /*
 
     public static void createItem(Input input, Tracker tracker) {
         System.out.println("=== Create a new Item ===");
@@ -173,13 +173,20 @@ public class StartUI {
 //В StartUI нам нужен массив действий. Каждая ячейка у нас будет одно действие.
 // Такая структура описывает наше меню.
 
+    //Произведем рефакторинг проекта. Нам нужно заменить вывод в консоль на интрефейс Output.
+    //Внедрение зависимости будем делать через конструторы.
+    private final Output out;
+    public StartUI(Output out) {
+        this.out =out;
+    }
+
     public void init(Input input, Tracker tracker, UserAction[] actions) {
         boolean run = true;
         while (run) {
             this.showMenu(actions);
             int select = input.askInt("Select: ");
             UserAction action = actions[select];
-            run = action.execute(input,tracker);
+            run = action.execute(input, tracker);
           /*  if (select == 0) {
                 StartUI.createItem(input, tracker);
             } else if (select == 1) {
@@ -221,14 +228,15 @@ public class StartUI {
         //Создадим класс ru.job4j.tracker.ConsoleInput.
 
        // Scanner scanner = new Scanner(System.in);
+        Output output = new ConsoleOutput();
         Input input = new ConsoleInput();
         Tracker tracker = new Tracker();
         //new StartUI().init(scanner, tracker);
-        UserAction[] action = {
-               new CreateAction(),
+        UserAction[] actions = {
+               new CreateAction(output),
                new Exit() // another action;
+                // another action;
         };
-        new StartUI().init(input, tracker, action);
+        new StartUI(output).init(input, tracker, actions);
     }
 }
-//
