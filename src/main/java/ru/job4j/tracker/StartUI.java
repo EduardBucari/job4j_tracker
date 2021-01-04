@@ -234,8 +234,8 @@ public class StartUI {
         //new StartUI().init(scanner, tracker);
         UserAction[] actions = {
                new CreateAction(output),
-               new Exit() // another action;
-                // another action;
+               new Exit(),
+                  // another action;
         };
         new StartUI(output).init(input, tracker, actions);
     }
