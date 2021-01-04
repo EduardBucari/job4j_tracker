@@ -98,6 +98,41 @@ public class StartUITest {
         assertThat(tracker.findById(item.getId()), is(nullValue()));
     }
 
+
+    //мы избавились от зависимости к System.out.
+    //Это дает возможность написать тесты на оставшиеся Actions.
+    //Произвести тестирование классов FindAllAction, FindByNameAction, FindByIdAction.
+   @Test
+   public  void whenFindAllAction() {
+       Tracker tracker = new Tracker();
+       Item item = new Item(1, "new item");
+       String[] answers = {
+               String.valueOf(item.getId()),
+       };
+       StartUI.findAllItems(tracker);
+   }
+
+    @Test
+    public  void whenFindByNameAction() {
+        Tracker tracker = new Tracker();
+        Item item = new Item(1, "new item");
+        String[] answers = {
+                String.valueOf(item.getId()),
+        };
+        StartUI.findItemByName(new StubInput(answers), tracker);
+    }
+
+    @Test
+    public  void whenFindByIdAction() {
+        Tracker tracker = new Tracker();
+        Item item = new Item(1, "new item");
+        String[] answers = {
+                String.valueOf(item.getId()),
+        };
+        StartUI.findItemById(new StubInput(answers), tracker);
+    }
+
+
     //Напишем тест whenExit()
     //Сценарий теста.
     // 1. Трекер загружается с одним действием - "выйти".
