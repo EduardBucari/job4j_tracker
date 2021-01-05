@@ -104,32 +104,54 @@ public class StartUITest {
     //Произвести тестирование классов FindAllAction, FindByNameAction, FindByIdAction.
    @Test
    public  void whenFindAllAction() {
+       Output out = new StubOutput();
+       Input in = new StubInput(
+               new String[] {"0"}
+       );
        Tracker tracker = new Tracker();
-       Item item = new Item(1, "new item");
-       String[] answers = {
-               String.valueOf(item.getId()),
+       UserAction[] actions = {
+               new FindAllItemsAction(),
+               new Exit()
        };
-       StartUI.findAllItems(tracker);
+       new StartUI(out).init(in, tracker, actions);
+       assertThat(out.toString(), is(
+               "Menu." + System.lineSeparator()
+       ));
    }
+
 
     @Test
     public  void whenFindByNameAction() {
+        Output out = new StubOutput();
+        Input in = new StubInput(
+                new String[] {"0"}
+        );
         Tracker tracker = new Tracker();
-        Item item = new Item(1, "new item");
-        String[] answers = {
-                String.valueOf(item.getId()),
+        UserAction[] actions = {
+                new FindItemsByNameAction(),
+                new Exit()
         };
-        StartUI.findItemByName(new StubInput(answers), tracker);
+        new StartUI(out).init(in, tracker, actions);
+        assertThat(out.toString(), is(
+                "Menu." + System.lineSeparator()
+        ));
     }
 
     @Test
     public  void whenFindByIdAction() {
+        Output out = new StubOutput();
+        Input in = new StubInput(
+                new String[] {"0"}
+        );
         Tracker tracker = new Tracker();
-        Item item = new Item(1, "new item");
-        String[] answers = {
-                String.valueOf(item.getId()),
+        UserAction[] actions = {
+                new FindItemByIdAction(),
+                new Exit()
         };
-        StartUI.findItemById(new StubInput(answers), tracker);
+        new StartUI(out).init(in, tracker, actions);
+        assertThat(out.toString(), is(
+                "Menu." + System.lineSeparator()
+        ));
     }
 
 
