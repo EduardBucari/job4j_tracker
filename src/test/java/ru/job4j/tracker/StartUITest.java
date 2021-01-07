@@ -58,10 +58,10 @@ public class StartUITest {
         );
         Tracker tracker = new Tracker();
         UserAction[] actions = {
-                new CreateAction(),
-                new Exit()
+                new CreateAction(new StubOutput()),
+                new Exit(new StubOutput())
         };
-       new StartUI().init(in, tracker, actions);
+       new StartUI(new StubOutput()).init(in, tracker, actions);
        assertThat(tracker.findAll()[0].getName(), is("Item name"));
     }
 
@@ -76,10 +76,10 @@ public class StartUITest {
                 new String[] {"0", "1"} // 0 - это входные параметры для ReplaceAction;
         );
         UserAction[] action = {
-                new ReplaceAction(),
-                new Exit()
+                new ReplaceAction(new StubOutput()),
+                new Exit(new StubOutput())
         };
-        new StartUI().init(in, tracker, action);
+        new StartUI(new StubOutput()).init(in, tracker, action);
         assertThat(tracker.findById(item.getId()).getName(), is(replacedName));
     }
 
@@ -91,10 +91,10 @@ public class StartUITest {
                 new String[] {"0", "1"} // 0 - это входные параметры для DeleteAction;
         );
         UserAction[] actions = {
-                new DeleteItemAction(),
-                new Exit()
+                new DeleteItemAction(new StubOutput()),
+                new Exit(new StubOutput())
         };
-        new StartUI().init(in, tracker, actions);
+        new StartUI(new StubOutput()).init(in, tracker, actions);
         assertThat(tracker.findById(item.getId()), is(nullValue()));
     }
 
@@ -110,8 +110,8 @@ public class StartUITest {
        );
        Tracker tracker = new Tracker();
        UserAction[] actions = {
-               new FindAllItemsAction(),
-               new Exit()
+               new FindAllItemsAction(out),
+               new Exit(out)
        };
        new StartUI(out).init(in, tracker, actions);
        assertThat(out.toString(), is(
@@ -128,8 +128,8 @@ public class StartUITest {
         );
         Tracker tracker = new Tracker();
         UserAction[] actions = {
-                new FindItemsByNameAction(),
-                new Exit()
+                new FindItemsByNameAction(out),
+                new Exit(out)
         };
         new StartUI(out).init(in, tracker, actions);
         assertThat(out.toString(), is(
@@ -145,8 +145,8 @@ public class StartUITest {
         );
         Tracker tracker = new Tracker();
         UserAction[] actions = {
-                new FindItemByIdAction(),
-                new Exit()
+                new FindItemByIdAction(out),
+                new Exit(out)
         };
         new StartUI(out).init(in, tracker, actions);
         assertThat(out.toString(), is(
@@ -168,7 +168,7 @@ public class StartUITest {
         );
         Tracker tracker = new Tracker();
         UserAction[] actions = {
-                new Exit()
+                new Exit(out)
         };
         new StartUI(out).init(in, tracker, actions);
         assertThat(out.toString(), is(
