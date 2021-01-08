@@ -12,7 +12,7 @@ public class FindAllItemsAction implements UserAction {
 
     @Override
     public boolean execute(Input input, Tracker tracker) {
-        System.out.println("=== Show all items ===");
+        out.println("=== Show all items ===");
         Item[] rsl = tracker.findAll();
         for (int i = 0; i < rsl.length; i++) {
             System.out.println(rsl[i]);
