@@ -102,38 +102,53 @@ public class StartUITest {
     //мы избавились от зависимости к System.out.
     //Это дает возможность написать тесты на оставшиеся Actions.
     //Произвести тестирование классов FindAllAction, FindByNameAction, FindByIdAction.
-   @Test
-   public  void whenFindAllAction() {
-       Output out = new StubOutput();
-       Input in = new StubInput(
-               new String[] {"0"}
-       );
-       Tracker tracker = new Tracker();
-       UserAction[] actions = {
-               new FindAllItemsAction(out),
-               new Exit(out)
-       };
-       new StartUI(out).init(in, tracker, actions);
-       assertThat(out.toString(), is(
-               "Menu." + System.lineSeparator()
-       ));
-   }
-
+    @Test
+    public  void whenFindAllAction() {
+        Output out = new StubOutput();
+        Input in = new StubInput(
+                new String[] {"0", "1"}
+        );
+        Tracker tracker = new Tracker();
+        Item findAll = tracker.add(new Item(0, "Find ALL"));
+        UserAction[] actions = {
+                new FindAllItemsAction(out),
+                new Exit(out)
+        };
+        new StartUI(out).init(in, tracker, actions);
+        String ln = System.lineSeparator();
+        assertThat(out.toString(), is(
+                "Menu." + ln
+                        + "0. Show all items" + ln
+                        + "1. Exit" + ln + "=== Show all items ===" + ln
+                        + findAll + ln
+                        + "Menu." + ln
+                        + "0. Show all items" + ln
+                        + "1. Exit" + ln + "=== Exit ===" + ln
+        ));
+    }
 
     @Test
     public  void whenFindByNameAction() {
         Output out = new StubOutput();
         Input in = new StubInput(
-                new String[] {"0"}
+                new String[] {"0", "1"}
         );
         Tracker tracker = new Tracker();
+        Item findByName = tracker.add(new Item(0, "Find by name"));
         UserAction[] actions = {
                 new FindItemsByNameAction(out),
                 new Exit(out)
         };
         new StartUI(out).init(in, tracker, actions);
+        String ln = System.lineSeparator();
         assertThat(out.toString(), is(
-                "Menu." + System.lineSeparator()
+                "Menu." + ln
+                        + "0. Find item by name" + ln
+                        + "1. Exit" + ln + "=== Find items by name ===" + ln
+                        + findByName + ln
+                        + "Menu." + ln
+                        + "0. Find item by name" + ln
+                        + "1. Exit" + ln + "=== Exit ===" + ln
         ));
     }
 
@@ -141,16 +156,24 @@ public class StartUITest {
     public  void whenFindByIdAction() {
         Output out = new StubOutput();
         Input in = new StubInput(
-                new String[] {"0"}
+                new String[] {"0", "1"}
         );
         Tracker tracker = new Tracker();
+        Item findById = tracker.add(new Item(0, "Find by Id"));
         UserAction[] actions = {
                 new FindItemByIdAction(out),
                 new Exit(out)
         };
         new StartUI(out).init(in, tracker, actions);
+        String ln = System.lineSeparator();
         assertThat(out.toString(), is(
-                "Menu." + System.lineSeparator()
+                "Menu." + ln
+                        + "0. Find item by Id" + ln
+                        + "1. Exit" + ln + "=== Find item by Id ===" + ln
+                        + findById + ln
+                        + "Menu." + ln
+                        + "0. Find item by Id" + ln
+                        + "1. Exit" + ln + "=== Exit ===" + ln
         ));
     }
 
@@ -160,19 +183,26 @@ public class StartUITest {
     // 1. Трекер загружается с одним действием - "выйти".
     // 2. На консоль выводится пункт "Выйти".
     // 3. В тесте проверяем, что StubInput содержит вывод меню.
+
     @Test
-    public void whenExit() {
+    public  void whenExit() {
         Output out = new StubOutput();
         Input in = new StubInput(
-                new String[] {"0"}
+                new String[] {"1"}
         );
         Tracker tracker = new Tracker();
+        Item exit = tracker.add(new Item(1, "Exit"));
         UserAction[] actions = {
                 new Exit(out)
         };
         new StartUI(out).init(in, tracker, actions);
+        String ln = System.lineSeparator();
         assertThat(out.toString(), is(
-                "Menu." + System.lineSeparator()
+                "Menu." + ln
+                        + "1. Exit" + ln + "=== Exit ===" + ln
+                        + exit + ln
+                        + "Menu." + ln
+                        + "1. Exit" + ln + "=== Exit ===" + ln
         ));
     }
 }

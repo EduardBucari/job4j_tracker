@@ -209,7 +209,7 @@ public class StartUI {
 
     }
         private void showMenu(UserAction[] actions) {
-            System.out.println("Menu.");
+            out.println("Menu.");
           //  System.out.println("0. Add new Item");// System.out.println("1. Show all items");
           //  System.out.println("2. Edit item");
           //  System.out.println("3. Delete item");
@@ -217,7 +217,7 @@ public class StartUI {
           //  System.out.println("5. Find items by name");
           //  System.out.println("6. Exit Program");
             for(int index = 0; index < actions.length; index++) {
-                System.out.println(index + ". " + actions[index].name());
+                out.println(index + ". " + actions[index].name());
             }
         }
 
