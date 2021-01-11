@@ -143,11 +143,11 @@ public class StartUITest {
         String ln = System.lineSeparator();
         assertThat(out.toString(), is(
                 "Menu." + ln
-                        + "0. Find item by name" + ln
+                        + "0. Find items by name" + ln
                         + "1. Exit" + ln + "=== Find items by name ===" + ln
                         + findByName + ln
                         + "Menu." + ln
-                        + "0. Find item by name" + ln
+                        + "0. Find items by name" + ln
                         + "1. Exit" + ln + "=== Exit ===" + ln
         ));
     }
@@ -199,9 +199,11 @@ public class StartUITest {
         String ln = System.lineSeparator();
         assertThat(out.toString(), is(
                 "Menu." + ln
+                        + "0. Exit" + ln
                         + "1. Exit" + ln + "=== Exit ===" + ln
                         + exit + ln
                         + "Menu." + ln
+                        + "0. Exit" + ln
                         + "1. Exit" + ln + "=== Exit ===" + ln
         ));
     }
