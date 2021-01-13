@@ -176,35 +176,4 @@ public class StartUITest {
                         + "1. Exit" + ln + "=== Exit ===" + ln
         ));
     }
-
-
-    //Напишем тест whenExit()
-    //Сценарий теста.
-    // 1. Трекер загружается с одним действием - "выйти".
-    // 2. На консоль выводится пункт "Выйти".
-    // 3. В тесте проверяем, что StubInput содержит вывод меню.
-
-    @Test
-    public  void whenExit() {
-        Output out = new StubOutput();
-        Input in = new StubInput(
-                new String[] {"1"}
-        );
-        Tracker tracker = new Tracker();
-        Item exit = tracker.add(new Item(1, "Exit"));
-        UserAction[] actions = {
-                new Exit(out)
-        };
-        new StartUI(out).init(in, tracker, actions);
-        String ln = System.lineSeparator();
-        assertThat(out.toString(), is(
-                "Menu." + ln
-                        + "0. Exit" + ln
-                        + "1. Exit" + ln + "=== Exit ===" + ln
-                        + exit + ln
-                        + "Menu." + ln
-                        + "0. Exit" + ln
-                        + "1. Exit" + ln + "=== Exit ===" + ln
-        ));
-    }
 }
