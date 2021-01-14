@@ -4,7 +4,7 @@ public class UserStore {
 
     public static User findUser(User[] users, String login) throws UserNotFoundException {
         for (int index = 0; index < users.length; index++) {
-            if (users[index] != null) {
+            if (users[index].getUsername().equals(login)) {
                 return users[index];
             }
         }  //если пользователя не нашли в списке, то кинуть исключение UserNotFoundException.
@@ -12,25 +12,15 @@ public class UserStore {
     }
 
     public static boolean validate(User user) throws UserInvalidException {
-        if (user.isValid() || user.getUsername().length() >= 3) {
-            return true;
+        if (!user.isValid() || user.getUsername().length() <= 3) {
+            throw new UserInvalidException();
         } //если пользователь не валидный или если имя пользователя состоит из менее трех символов,
         // то кинуть исключение UserInvalidException
-        throw new UserInvalidException();
-
-        if (user.isValid()) {
-            return true;
-        } //Если метод isValid() false, то нужно кинуть исключение UserInvalidException.
-        throw new UserInvalidException();
-
-        if (user.getUsername().length() >= 3) {
-            return true;
-        }// у объекта user количество символов в поле username меньше 3.
-        // Если оно меньше, то нужно выкинуть исключение UserInvalidException.
-        throw new UserInvalidException();
+        return true;
     }
 
     public static void main(String[] args) throws UserNotFoundException, UserInvalidException {
+      //  /*
         User[] users = {
                 new User("Petr Arsentev", true)
         };
@@ -39,9 +29,9 @@ public class UserStore {
 
         if (validate(user)) {
             System.out.println("This user has an access");
-        }
+     //    */
         try {
-            if () {
+            if (findUser()) {
 
             }
         } catch (UserNotFoundException en) {
