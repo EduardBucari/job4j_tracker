@@ -1,6 +1,7 @@
 package ru.job4j.ex;
 
 public class FindEl {
+
     //indexOf - метод поиска индекса элемента в строковом массиве.
     public static int indexOf(String[] value, String key) throws ElementNotFoundException {
         int rsl = -1;
