@@ -109,7 +109,7 @@ public class StartUI {
                 new FindItemByIdAction(output),
                 new FindItemsByNameAction(output),
                 new Exit(output),
-                new ValidateAction(input)
+                // another action
         };
         new StartUI(output).init(input, tracker, actions);
     }
