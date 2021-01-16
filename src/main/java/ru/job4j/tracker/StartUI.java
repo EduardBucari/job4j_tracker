@@ -99,7 +99,7 @@ public class StartUI {
     public static void main(String[] args) {
         //Рефакторинг кода. Добавим обработку ситуаций: ввод строки вместо числа.
         Output output = new ConsoleOutput();
-        Input input = new ValidateInput();
+        Input input = new ValidateInput(output, new ConsoleInput()); //Адаптируем StartUI.main
         Tracker tracker = new Tracker();
         UserAction[] actions = {
                 new CreateAction(output),
