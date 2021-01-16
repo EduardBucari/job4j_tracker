@@ -181,7 +181,7 @@ public class StartUITest {
     public void whenInvalidExit() {
         Output out = new StubOutput();
         Input in = new StubInput(
-              new String[] {"1"}
+              new String[] {"100", "1"}
         );
         Tracker tracker = new Tracker();
         Item exit = tracker.add(new Item(1, "Exit"));
