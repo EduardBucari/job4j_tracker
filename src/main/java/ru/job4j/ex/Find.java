@@ -9,7 +9,7 @@ public class Find {
         }  */
 
        // Избавимся от блока if-else-throw.
-      if (index > data.length) {
+      if (index < 0 || index >= data.length) {
           throw new IllegalArgumentException("Index out of bound");
       }
         return data[index];
