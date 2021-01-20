@@ -100,7 +100,10 @@ public class StartUI {
         //Рефакторинг кода. Добавим обработку ситуаций: ввод строки вместо числа.
         Output output = new ConsoleOutput();
         Input input = new ValidateInput(output, new ConsoleInput()); //Адаптируем StartUI.main
-        Tracker tracker = new Tracker();
+        // шаблоны проектирования singleton:
+        // 3.2 Чтобы получить объект класса Tracker мы используем метод Tracker.getInstance().
+        //  в public class StartUI в методе main.
+        Tracker tracker = Tracker.getInstance();
         UserAction[] actions = {
                 new CreateAction(output),
                 new FindAllItemsAction(output),
