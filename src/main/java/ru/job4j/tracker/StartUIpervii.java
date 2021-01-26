@@ -5,7 +5,7 @@ import java.time.format.DateTimeFormatter;
 
 public class StartUIpervii {
 
-    public static void main(String[] args) {
+ /*   public static void main(String[] args) {
 
         Tracker tracker = new Tracker();
 
@@ -23,6 +23,6 @@ public class StartUIpervii {
         tracker.add(item);
         Item rsl = tracker.findById(1);
         System.out.println(rsl);
-    }
+    } */
 }
 
