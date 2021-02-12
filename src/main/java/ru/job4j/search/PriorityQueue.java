@@ -17,18 +17,13 @@ public class PriorityQueue {
 
    public void put(Task task) {
        int index = 0;
-       tasks.add(5, task);
-       tasks.add(3, task);
-       tasks.add(1, task);
 
        for (Task element : tasks) {
-            if (element == null) { //Если элементов нет, тогда index будет равен 0.
-                index = 0;
-            }
-             if (?) {
-                 index = tasks.size();
-                 //(Если нужно вставить элемент в конец списка, тогда необходимо пройти по всем элементам
-                 // и индекс будет равен размеру всей коллекции.)
+            if (element.getPriority() < task.getPriority()) {
+                index ++;
+            } else {
+                break;
+
                // Необходимо пройти циклом по tasks, сравнивая в if приоритет element с приоритетом task.
                // Если приоритет больше у task, index увеличить на 1. Если приоритет больше у element,
                // прервать цикл и по текущему индексу записать task в tasks.
