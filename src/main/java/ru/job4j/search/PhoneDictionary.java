@@ -30,10 +30,10 @@ public class PhoneDictionary {
    */
     public ArrayList<Person> find(String key) {
         ArrayList<Person> result = new ArrayList<>();
-        for (Object Person : persons) {      //тип поставим Person
-            this.persons.get(1) ;         // в цикле вызываем гетеры у персона и проверяем на совпадение с ключом
+        for (Person p : persons) {      //тип поставим Person
+           if (p.getName(),contains(key) || p.getSurname(),contains(key) ||
+            p.getPhone(),contains(key) || p.getAddress(),contains(key))   // в цикле вызываем гетеры у персона и проверяем на совпадение с ключом
         }
-
         return result;
     }
 }
