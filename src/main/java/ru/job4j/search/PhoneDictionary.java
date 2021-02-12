@@ -28,13 +28,12 @@ public class PhoneDictionary {
    В данном случае на строки (тип String). Т.е. в оператор сравнения уже попадает строка.
    А уже у строк есть метод contains, который ищет в ней символы.
    */
- for (Object value : persons) {
-        return value;
-    }
-
-//===================================================================
     public ArrayList<Person> find(String key) {
         ArrayList<Person> result = new ArrayList<>();
+        for (Object Person : persons) {      //тип поставим Person
+            this.persons.get(1) ;         // в цикле вызываем гетеры у персона и проверяем на совпадение с ключом
+        }
+
         return result;
     }
 }
