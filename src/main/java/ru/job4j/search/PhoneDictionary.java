@@ -31,9 +31,9 @@ public class PhoneDictionary {
     public ArrayList<Person> find(String key) {
         ArrayList<Person> result = new ArrayList<>();
         for (Person p : persons) {      //тип поставим Person и в цикле вызываем гетеры у персона и проверяем на совпадение с ключом
-           if (p.getName(),contains(key) || p.getSurname(),contains(key) ||
-            p.getPhone(),contains(key) || p.getAddress(),contains(key)) {
-                result.add(person);      // добавить Person в список
+           if (p.getName().contains(key) || p.getSurname().contains(key) ||
+            p.getPhone().contains(key) || p.getAddress().contains(key)) {
+                result.add(p);      // добавить Person в список
             }
         }
         return result;
