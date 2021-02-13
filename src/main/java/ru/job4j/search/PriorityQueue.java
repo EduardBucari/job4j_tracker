@@ -19,7 +19,7 @@ public class PriorityQueue {
        int index = 0;
 
        for (Task element : tasks) {
-            if (element.getPriority() < task.getPriority()) {
+            if (element.getPriority() > task.getPriority()) {
                break;
                // Необходимо пройти циклом по tasks, сравнивая в if приоритет element с приоритетом task.
                // Если приоритет больше у task, index увеличить на 1. Если приоритет больше у element,
