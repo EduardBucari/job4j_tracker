@@ -33,7 +33,7 @@ public class PhoneDictionary {
         for (Person p : persons) {      //тип поставим Person и в цикле вызываем гетеры у персона и проверяем на совпадение с ключом
            if (p.getName(),contains(key) || p.getSurname(),contains(key) ||
             p.getPhone(),contains(key) || p.getAddress(),contains(key)) {
-                this.persons.add(Person);      // добавить Person в список
+                result.add(person);      // добавить Person в список
             }
         }
         return result;
