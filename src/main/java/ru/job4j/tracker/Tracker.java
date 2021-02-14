@@ -1,27 +1,27 @@
 package ru.job4j.tracker;
 
 import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.List;
 
-// Переделаем класс Tracker под шаблон singleton.
-
-// 2. Так же нужно запретить наследование этого класса. Для этого используем ключевое слово final.
 public final class Tracker {
 
-    // 3.1 Добавим public static instance.
     private static Tracker instance = null;
 
-    private final Item[] items = new Item[100];
+ //  нужно будет заменить массивы на java.util.ArrayList.
+ //Основное изменение будет в получении и вставки данных в коллекцию.
+
+ //   private final Item[] items = new Item[100];
+    ArrayList<Item> items = new ArrayList<>();
     private int ids = 1;
     private int size = 0;
 
-    // 1. Создать явный конструктор и указать у него модификатор private.
-    // Таким образом, никто не сможет создать объект этого класса.
+
+
+
      Tracker() {   // private Tracker()
     }
 
-    // 3. Добавим public static метод, чтобы другие классы могли получить ссылку на объект Tracker.
-    // 3.2 Чтобы получить объект класса Tracker мы используем метод Tracker.getInstance().
-    // в public class StartUI в методе main.
     public  static Tracker getInstance() {
         if (instance == null) {
             instance = new Tracker();
@@ -31,15 +31,18 @@ public final class Tracker {
 
     public Item add(Item item) {
         item.setId(ids++);
-        items[size++] = item;
+      //  items[size++] = item;
+        items.add(item);
         return item;
     }
 
-    public Item[] findAll() {
-        return Arrays.copyOf(items, size);
+    //public Item[] findAll() {
+       // return Arrays.copyOf(items, size);
+    public List<Item> findAll() {
+        return items;
     }
 
-    public Item[] findByName(String key) {
+  /*  public Item[] findByName(String key) {
         Item[] findByName = new Item[size];
         int sizeFBN = 0;
         for (int index = 0; index < this.size; index++) {
@@ -51,23 +54,51 @@ public final class Tracker {
         }
         return Arrays.copyOf(findByName, sizeFBN);
     }
+    */
 
-        public Item findById(int id) {
-        int index = indexOf(id);
-        return index != -1 ? items[index] : null;
-    }
-
-    public boolean replace(int id, Item item) {
-        int index = indexOf(id);
-        item.setId(id);
-        boolean rsl = index  != -1;
-        if (rsl) {
-            items[index] = item;
+    public List<Item> findByName(String key) {
+        List<Item> rsl = new ArrayList<>();
+        for (Item i : items) {
+            if (i.getName().equals(key)) {
+                rsl.add(i);
+            }
         }
         return rsl;
     }
 
-    private int indexOf(int id) {
+        public Item findById(int id) {
+      //  int index = indexOf(id);
+      //  return index != -1 ? items[index] : null;
+            Item rsl  = null;
+            for (Item i : items) {
+                if (i.getId() == id) {
+                    rsl = i;
+                    break;
+                }
+            }
+            return rsl;
+    }
+
+    public boolean replace(int id, Item item) {
+      /*  int index = indexOf(id);
+        item.setId(id);
+        boolean rsl = index  != -1;
+        if (rsl) {
+            items[index] = item;
+        }  */
+
+        boolean rsl = false;
+        for (int i = 0; i != items.size(); i++) {
+            if (items.get(i).getId() == id) {
+                items.set(i, item);
+                rsl = true;
+                break;
+            }
+        }
+        return rsl;
+    }
+
+  /*  private int indexOf(int id) {
         int rsl = -1;
         for (int index = 0; index < size; index++) {
             if (items[index].getId() == id) {
@@ -76,9 +107,9 @@ public final class Tracker {
             }
         }
         return rsl;
-    }
+    }  */
 
-    public boolean delete(int id) {
+ /*   public boolean delete(int id) {
         int index = indexOf(id);
         boolean rsl = index != -1;
         if (rsl) {
@@ -92,5 +123,17 @@ public final class Tracker {
             return rsl;
         }
         return false;
+    }  */
+
+    public boolean delete(int id) {
+        boolean rsl = false;
+        for (int i = 0; i != items.size(); i++) {
+          if (items.get(i).getId() == id) {
+              items.remove(i);
+              rsl = true;
+              break;
+          }
+        }
+        return rsl;
     }
 }
