@@ -64,7 +64,7 @@ public final class Tracker {
     }
 
         public Item findById(int id) {
-      //  int index = indexOf(id);
+        int index = indexOf(id);
       //  return index != -1 ? items[index] : null;
             Item rsl  = null;
             for (Item i : items) {
@@ -77,14 +77,14 @@ public final class Tracker {
     }
 
     public boolean replace(int id, Item item) {
-      /*  int index = indexOf(id);
+      int index = indexOf(id);
         item.setId(id);
         boolean rsl = index  != -1;
-        if (rsl) {
-            items[index] = item;
-        }  */
+    //    if (rsl) {
+    //        items[index] = item;
+    //    }
 
-        boolean rsl = false;
+    //    boolean rsl = false;
         for (int i = 0; i != items.size(); i++) {
             if (items.get(i).getId() == id) {
                 items.set(i, item);
@@ -123,7 +123,9 @@ public final class Tracker {
     }  */
 
     public boolean delete(int id) {
-        boolean rsl = false;
+        int index = indexOf(id);
+        boolean rsl = index != -1;
+      //  boolean rsl = false;
         for (int i = 0; i != items.size(); i++) {
           if (items.get(i).getId() == id) {
               items.remove(i);
