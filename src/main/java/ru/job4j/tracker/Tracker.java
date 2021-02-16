@@ -12,11 +12,8 @@ public final class Tracker {
  //Основное изменение будет в получении и вставки данных в коллекцию.
 
  //   private final Item[] items = new Item[100];
-    ArrayList<Item> items = new ArrayList<>();
+   private final List<Item> items = new ArrayList<>();
     private int ids = 1;
-    private int size = 0;
-
-
 
 
      Tracker() {   // private Tracker()
@@ -98,16 +95,16 @@ public final class Tracker {
         return rsl;
     }
 
-  /*  private int indexOf(int id) {
+    private int indexOf(int id) {
         int rsl = -1;
-        for (int index = 0; index < size; index++) {
-            if (items[index].getId() == id) {
+        for (int index = 0; index < items.size(); index++) {
+            if (items.get(index).getId() == id) {
                 rsl = index;
                 break;
             }
         }
         return rsl;
-    }  */
+    }
 
  /*   public boolean delete(int id) {
         int index = indexOf(id);
