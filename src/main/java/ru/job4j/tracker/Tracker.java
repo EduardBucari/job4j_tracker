@@ -65,14 +65,15 @@ public final class Tracker {
 
         public Item findById(int id) {
         int index = indexOf(id);
-      //  return index != -1 ? items[index] : null;
+       // return index != -1 ? items[index] : null;
+            return index != -1 ? items.set(index, item) : null;
             Item rsl  = null;
-            for (Item i : items) {
-                if (i.getId() == id) {
-                    rsl = i;
-                    break;
-                }
-            }
+      //      for (Item i : items) {
+      //          if (i.getId() == id) {
+      //              rsl = i;
+      //              break;
+      //          }
+      //      }
             return rsl;
     }
 
@@ -80,18 +81,19 @@ public final class Tracker {
       int index = indexOf(id);
         item.setId(id);
         boolean rsl = index  != -1;
-    //    if (rsl) {
+        if (rsl) {
     //        items[index] = item;
-    //    }
+            items.set(index,item);
+        }
 
     //    boolean rsl = false;
-        for (int i = 0; i != items.size(); i++) {
-            if (items.get(i).getId() == id) {
-                items.set(i, item);
-                rsl = true;
-                break;
-            }
-        }
+    //    for (int i = 0; i != items.size(); i++) {
+    //        if (items.get(i).getId() == id) {
+    //            items.set(i, item);
+    //            rsl = true;
+    //            break;
+    //        }
+    //    }
         return rsl;
     }
 
