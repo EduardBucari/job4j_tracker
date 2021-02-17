@@ -1,6 +1,11 @@
 package ru.job4j.tracker;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class StartUI {
+
+    //заменим массивы на java.util.ArrayList.
 
     public static void createItem(Input input, Tracker tracker) {
         System.out.println("=== Create a new Item ===");
@@ -11,9 +16,16 @@ public class StartUI {
 
     public static void findAllItems(Tracker tracker) {
         System.out.println("=== Show all items ===");
-        Item[] rsl = tracker.findAll();
-        for (int i = 0; i < rsl.length; i++) {
-            System.out.println(rsl[i]);
+      //  Item[] rsl = tracker.findAll();
+      //  for (int i = 0; i < rsl.length; i++) {
+      //      System.out.println(rsl[i]);
+      //  }
+
+        List<Item> rsl = tracker.findAll();
+        if (rsl.size() > 0) {
+            for (Item i : rsl) {
+                System.out.println(i);
+            }
         }
     }
 
@@ -55,10 +67,14 @@ public class StartUI {
     public static void findItemByName(Input input, Tracker tracker) {
         System.out.println("=== Find items by name ===");
         String orderNames = input.askStr("Enter order names: ");
-        Item[] rsl = tracker.findByName(orderNames);
-        if (rsl.length > 0) {
-            for (int i = 0; i < rsl.length; i++) {
-                System.out.println(rsl[i]);
+      //  Item[] rsl = tracker.findByName(orderNames);
+      //  if (rsl.length > 0) {
+      //      for (int i = 0; i < rsl.length; i++) {
+      //          System.out.println(rsl[i]);
+        List<Item> rsl = tracker.findByName(orderNames);
+        if (rsl.size() > 0) {
+            for ( Item i : rsl) {
+                System.out.println(i);
             }
         } else {
             System.out.println("Заявки с таким именем не найдены");
