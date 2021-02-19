@@ -8,7 +8,7 @@ public class FullSearch {
         HashSet<String> numbers = new HashSet<>();
         // в цикле мы должны перебирать список list и складывать номера задач в numbers
         for (String n : list) {
-             numbers.add(n);
+             numbers.add(n.getNumber());
         }
         return numbers;
     }
