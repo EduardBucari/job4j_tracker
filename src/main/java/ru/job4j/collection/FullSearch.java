@@ -11,5 +11,6 @@ public class FullSearch {
              numbers.add(n.getNumber());
         }
         return numbers;
+
     }
 }
