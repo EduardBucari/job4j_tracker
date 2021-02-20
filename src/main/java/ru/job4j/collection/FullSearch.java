@@ -7,7 +7,7 @@ public class FullSearch {
     public static HashSet<String> extractNumber(List<Task> list) {
         HashSet<String> numbers = new HashSet<>();
         // в цикле мы должны перебирать список list и складывать номера задач в numbers
-        for (String n : list) {
+        for (Task n : list) {
              numbers.add(n.getNumber());
         }
         return numbers;
