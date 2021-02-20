@@ -18,11 +18,11 @@ public class UniqueText {
         // for-each origin -> new HashSet
         for (String st : origin ) {
             check.add(st);
-            // for-each text -> hashSet.contains
-            for (String str : text) {
-                if (str.contains(duplicateText)) {
-                    return true;
-                }
+        }
+        // for-each text -> hashSet.contains
+        for (String str : text) {
+            if (str.contains(duplicateText)) {
+                return true;
             }
         }
         return rsl;
