@@ -11,7 +11,7 @@ public class NotifyAccount {
         // for-each account to HashSet;
 
         for (Account a : rsl) {
-
+            rsl.add(a);
         }
         return rsl;
     }
