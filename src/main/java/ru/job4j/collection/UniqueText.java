@@ -21,7 +21,7 @@ public class UniqueText {
         }
         // for-each text -> hashSet.contains
         for (String str : text) {
-            if (!str.contains(duplicateText)) {
+            if (!check.contains(str)) {
                 return false;
             }
         }
