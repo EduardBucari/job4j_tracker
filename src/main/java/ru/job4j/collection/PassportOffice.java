@@ -11,10 +11,9 @@ public class PassportOffice {
     public boolean add(Citizen citizen) {
         boolean rsl = false;
         //Для решения этой задачи потребуются методы Map.containsKey(key) и Map.get(key).
-        if (!citizens.containsKey("")) {
-            return true;
-        } else {
+        if (!citizens.containsKey(citizen.getPassport())) {
             citizens.put(citizen.getPassport(), citizen);
+            return true;
         }
         return rsl;
     }
