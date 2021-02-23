@@ -10,7 +10,7 @@ public class NotifyAccount {
         // HashSet устранит дубликаты клиентов банка самостоятельно.
         // for-each account to HashSet;
 
-        for (Account a : rsl) {
+        for (Account a : accounts) {
             rsl.add(a);
         }
         return rsl;
