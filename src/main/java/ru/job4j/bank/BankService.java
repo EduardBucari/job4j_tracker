@@ -1,0 +1,92 @@
+package ru.job4j.bank;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+// 3. Создаем главный сервис:
+//1 Регистрировать пользователя.
+//2 Удалять пользователя из системы.
+//3 Добавлять пользователю банковский счет. У пользователя системы могут быть несколько счетов.
+//4 Переводить деньги с одного банковского счета на другой счет.
+public class BankService {
+
+    // Это поле содержит всех пользователей системы с привязанными к ним счетами.
+      private Map<User, List<Account>> users = new HashMap<>();
+
+
+     /* Чтобы добавить пользователя в систему нужно использовать метод Map.put
+      Этот метод принимает два параметра: пользователя и список счетов.
+      По умолчанию нужно добавить пустой список - new ArrayList<Account>().
+      В методе должна быть проверка, что такого пользователя еще нет в системе.
+      Если он есть, то нового добавлять не надо. */
+      public void addUser(User user) {
+          this.users.put(user, new ArrayList<>());
+      }
+
+      public void deleteUser(User user) {
+          this.users.remove(user);  // Удалять пользователя из системы.
+      }
+
+
+
+      /* Этот метод должен добавить новый счет к пользователю.
+      Первоначально пользователя нужно найти по паспорту.
+      Для этого нужно использовать метод findByPassport.
+      После этого мы получим список всех счетов пользователя и добавим новый счет к ним.
+      В этом методе должна быть проверка, что такого счета у пользователя еще нет.
+      */
+      public void addAccount(String passport, Account account) {
+         for (Map.Entry<User, List<Account>> bank : this.users.entrySet()) {
+             if (bank.getKey().getPassport().equals(passport)) {
+                 bank.getValue().add(account);
+                 break;
+             }
+         }
+      }
+
+
+
+      /* Этот метод ищет пользователя по номеру паспорта.
+      Здесь нужно использовать перебор всех элементов через цикл for-each и метод Map.keySet.*/
+      public User findByPassport(String passport) {
+          for (Map.Entry<User, List<Account>> bank : this.users.entrySet()) {
+              if (bank.getKey().getPassport().equals(passport)) {
+                  bank.getValue().
+              }
+          }
+          return null;
+      }
+
+
+
+
+
+      /*Этот метод ищет счет пользователя по реквизитам. Сначала нужно найти пользователя.
+      Потом получить список счетов этого пользователя и в нем найти нужный счет.*/
+      public Account findByRequisite(String passport, String requisite) {
+          Account account = null;
+          for (Account temp : addAccount(passport, )) {
+
+          }
+          return null;
+      }
+
+
+      /*Метод для перечисления денег с одного счёта на другой счёт.
+        Если счёт не найден или не хватает денег на счёте srcAccount (с которого переводят),
+        то метод должен вернуть false.*/
+      public boolean transferMoney(String srcPassport, String srcRequisite,
+                                   String destPassport, String destRequisite, double amount) {
+          boolean rsl = false;
+          Account srcAccount = findByRequisite(srcPassport, srcRequisite);
+          Account destAccount = findByRequisite(destPassport, destRequisite);
+          if (srcAccount.getBalance() >= amount) {
+              srcAccount.setBalance(srcAccount.getBalance() - amount);
+              destAccount.setBalance(destAccount.getBalance() + amount);
+              rsl = true;
+          }
+          return rsl;
+      }
+}
