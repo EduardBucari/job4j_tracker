@@ -22,7 +22,7 @@ public class BankService {
       В методе должна быть проверка, что такого пользователя еще нет в системе.
       Если он есть, то нового добавлять не надо. */
       public void addUser(User user) {
-          this.users.put(user, new ArrayList<>());
+          this.users.putIfAbsent(user, new ArrayList<>());
       }
 
       public void deleteUser(User user) {
@@ -51,10 +51,8 @@ public class BankService {
       /* Этот метод ищет пользователя по номеру паспорта.
       Здесь нужно использовать перебор всех элементов через цикл for-each и метод Map.keySet.*/
       public User findByPassport(String passport) {
-          for (Map.Entry<User, List<Account>> bank : this.users.entrySet()) {
-              if (bank.getKey().getPassport().equals(passport)) {
-                  bank.getValue().
-              }
+          for (User user : Map.keySet()) {
+
           }
           return null;
       }
