@@ -46,22 +46,16 @@ public class BankService {
          }
       }
 
-
-
       /* Этот метод ищет пользователя по номеру паспорта.
       Здесь нужно использовать перебор всех элементов через цикл for-each и метод Map.keySet.*/
       public User findByPassport(String passport) {
           for (User user : users.keySet()) {
               if (user.getPassport().equals(passport)) {
-                   user.getPassport();
+                   return user;
               }
           }
           return null;
       }
-
-
-
-
 
       /*
       Этот метод ищет счет пользователя по реквизитам. Сначала нужно найти пользователя.
@@ -75,20 +69,14 @@ public class BankService {
 - если ничего не нашли - возвращаем null
 */
       public Account findByRequisite(String passport, String requisite) {
-        for (User user : user.findByPassport(passport)) {
+          User user = user.findByPassport(passport);
+        for (User temp : users.keySet()) {
             if (user != null) {
-                users.get();
+                List<Account> accounts = users.get(user);
             }
         }
           return null;
       }
-
-
-
-
-
-
-
 
       /*Метод для перечисления денег с одного счёта на другой счёт.
         Если счёт не найден или не хватает денег на счёте srcAccount (с которого переводят),
