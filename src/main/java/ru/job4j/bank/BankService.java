@@ -70,11 +70,16 @@ public class BankService {
 */
       public Account findByRequisite(String passport, String requisite) {
           User user = user.findByPassport(passport);
-        for (User temp : users.keySet()) {
             if (user != null) {
                 List<Account> accounts = users.get(user);
+
+                // В цикле мы перебираем список аккаунтов и сравниваем реквизиты
+                // каждого аккаунта с этими реквизитами
+                // и как только нашли совпадение - вернули найденный аккаунт
+                for (List<Account> accounts  : requisite) {
+                   return Account;
+                }
             }
-        }
           return null;
       }
 
