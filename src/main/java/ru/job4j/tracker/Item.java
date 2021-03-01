@@ -2,17 +2,15 @@ package ru.job4j.tracker;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Collections;
 
-public class Item {
+public class Item implements Comparable<Item> {
     private int id;
     private String name;
     private LocalDateTime created = LocalDateTime.now();
 
-    // public Item() {} // Конструктор без параметров.
-   // public Item(int id) {this.id = id;} // конструктор с параметром id, инициализируем поля, а иначе они ничего не делают.
 
-
-    public Item(int id, String name) {  // конструктор с параметрами id и name
+    public Item(int id, String name) {
         this.id = id;
         this.name = name;
     }
@@ -45,4 +43,17 @@ public class Item {
                 ", created=" + created +
                 '}';
     }
+
+     // Создайте для модели данных ru.job4j.tracker.Item компаратор,
+    // который сортирует данные по возрастанию.
+  @Override
+    public int compareTo(Item another) {
+        return Integer.compare(id, another.id);
+  }
+
+     // Создайте для модели данных ru.job4j.tracker.Item компаратор,
+    // который сортирует данные по убыванию.
+
+
+
 }
