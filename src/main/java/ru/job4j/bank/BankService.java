@@ -75,9 +75,12 @@ public class BankService {
 
                 // В цикле мы перебираем список аккаунтов и сравниваем реквизиты
                 // каждого аккаунта с этими реквизитами
-                // и как только нашли совпадение - вернули найденный аккаунт
-                for (List<Account> accounts  : requisite) {
-                   return Account;
+                // и как только нашли совпадение - вернули найденный аккаунт.
+                // Внутри цикла должна быть проверка поля requisite у аккаунта
+                for (Account account  : accounts) {
+                   if (account.setRequisite()) {
+                       return account;
+                   }
                 }
             }
           return null;
