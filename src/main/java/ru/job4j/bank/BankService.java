@@ -38,12 +38,10 @@ public class BankService {
       В этом методе должна быть проверка, что такого счета у пользователя еще нет.
       */
       public void addAccount(String passport, Account account) {
-         for (Map.Entry<User, List<Account>> bank : this.users.entrySet()) {
-             if (bank.getKey().getPassport().equals(passport)) {
-                 bank.getValue().add(account);
-                 break;
-             }
-         }
+          User user = user.findByPassport(passport);
+          if (account == null) {
+              List<Account> accounts = users.putIfAbsent(account);
+          }
       }
 
       /* Этот метод ищет пользователя по номеру паспорта.
@@ -78,7 +76,7 @@ public class BankService {
                 // и как только нашли совпадение - вернули найденный аккаунт.
                 // Внутри цикла должна быть проверка поля requisite у аккаунта
                 for (Account account  : accounts) {
-                   if (account.setRequisite()) {
+                   if (requisite.equals(account.getRequisite())) {
                        return account;
                    }
                 }
