@@ -17,15 +17,20 @@ public class ItemSorterTest {
     @Test
       public void whenAscendingOrderTest() {
         List<Item> items = Arrays.asList(
+                new Item(3, "Oleg"),
                 new Item(1, "Ivan"),
-                new Item(2, "Victor"),
-                new Item(3, "Oleg")
+                new Item(2, "Victor")
         );
-        List<Item> items1 = ItemSorter.main(items);
-        assertThat(items1.sort(), is(new Item()));
+        List<Item> expected = Arrays.asList(
+                new Item(1, "Ivan"),
+                new Item(3, "Oleg"),
+                new Item(2, "Victor")
+        );
+        List<Item> items1 = items.sort(new ItemSortByName());
+        assertThat(items, is(expected));
 
     }
-
+/*
     @Test
       public void whenDescendingOrderTest() {
         List<Item> items = Arrays.asList(
@@ -34,4 +39,5 @@ public class ItemSorterTest {
                 new Item(1, "Ivan")
         );
     }
+    */
 }
