@@ -36,12 +36,25 @@ public class BankService {
       Для этого нужно использовать метод findByPassport.
       После этого мы получим список всех счетов пользователя и добавим новый счет к ним.
       В этом методе должна быть проверка, что такого счета у пользователя еще нет.
+      -------
+      Нашли user, проверили его на null, потом получили список аккаунтов
+      List<Account> accounts = users.get(user);
+      и вот уже этот список проверяем нет ли там еще добавляемого
+      аккаунта с помощью метода contains()
+      и вот после проверки добавляем в список аккаунтов
+      необходимый аккаунт с помощью метода add()
       */
       public void addAccount(String passport, Account account) {
           User user = user.findByPassport(passport);
           if (account == null) {
-              List<Account> accounts = users.putIfAbsent(account);
+              List<Account> accounts = users.get(user);
+              for (Account account1 : accounts) {
+                  if (!accounts.contains(account1)){
+                      accounts.add(account);
+                  }
+              }
           }
+
       }
 
       /* Этот метод ищет пользователя по номеру паспорта.
