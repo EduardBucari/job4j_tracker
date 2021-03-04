@@ -46,15 +46,12 @@ public class BankService {
       */
       public void addAccount(String passport, Account account) {
           User user = user.findByPassport(passport);
-          if (account == null) {
+          if (user != null) {
               List<Account> accounts = users.get(user);
-              for (Account account1 : accounts) {
-                  if (!accounts.contains(account1)){
+                  if (!accounts.contains(account)){
                       accounts.add(account);
                   }
-              }
           }
-
       }
 
       /* Этот метод ищет пользователя по номеру паспорта.
@@ -109,6 +106,9 @@ public class BankService {
               srcAccount.setBalance(srcAccount.getBalance() - amount);
               destAccount.setBalance(destAccount.getBalance() + amount);
               rsl = true;
+          }
+          if (srcAccount == null && destAccount == null) {
+              return false;
           }
           return rsl;
       }
