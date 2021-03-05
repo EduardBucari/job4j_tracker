@@ -45,7 +45,7 @@ public class BankService {
       необходимый аккаунт с помощью метода add()
       */
       public void addAccount(String passport, Account account) {
-          User user = user.findByPassport(passport);
+          User user = findByPassport(passport);
           if (user != null) {
               List<Account> accounts = users.get(user);
                   if (!accounts.contains(account)){
@@ -77,7 +77,7 @@ public class BankService {
 - если ничего не нашли - возвращаем null
 */
       public Account findByRequisite(String passport, String requisite) {
-          User user = user.findByPassport(passport);
+          User user = findByPassport(passport);
             if (user != null) {
                 List<Account> accounts = users.get(user);
 
@@ -107,7 +107,7 @@ public class BankService {
               destAccount.setBalance(destAccount.getBalance() + amount);
               rsl = true;
           }
-          if (srcAccount == null && destAccount == null) {
+          if (srcAccount != null && destAccount != null && srcAccount.getBalance() >= amount) {
               return false;
           }
           return rsl;
