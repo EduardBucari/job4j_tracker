@@ -3,10 +3,7 @@ package ru.job4j.tracker;
 import org.junit.Test;
 
 import java.security.PublicKey;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.*;
@@ -26,18 +23,24 @@ public class ItemSorterTest {
                 new Item(3, "Oleg"),
                 new Item(2, "Victor")
         );
-        List<Item> items1 = items.sort(new ItemSortByName());
+        items.sort(new ItemSortByName());
         assertThat(items, is(expected));
 
     }
-/*
+
     @Test
       public void whenDescendingOrderTest() {
         List<Item> items = Arrays.asList(
                 new Item(3, "Oleg"),
+                new Item(1, "Ivan"),
+                new Item(2, "Victor")
+        );
+        List<Item> expected = Arrays.asList(
                 new Item(2, "Victor"),
+                new Item(3, "Oleg"),
                 new Item(1, "Ivan")
         );
+        Collections.sort(items, new ItemSortByName());
+        assertThat(items, is(expected));
     }
-    */
 }
