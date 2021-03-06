@@ -2,6 +2,8 @@ package ru.job4j.tracker;
 
 import org.junit.Test;
 
+import java.util.List;
+import java.util.Comparator;
 import java.security.PublicKey;
 import java.util.*;
 
@@ -40,7 +42,7 @@ public class ItemSorterTest {
                 new Item(3, "Oleg"),
                 new Item(1, "Ivan")
         );
-        Collections.sort(items, new ItemSortByName());
+        Collections.sort(items, new ItemSortByName().reversed());
         assertThat(items, is(expected));
     }
 }
