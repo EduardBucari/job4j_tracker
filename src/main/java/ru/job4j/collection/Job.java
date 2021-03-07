@@ -1,13 +1,17 @@
 package ru.job4j.collection;
 
+import java.util.Objects;
+
 public class Job implements Comparable<Job> {
     /*
-    рассмотрим модель данных ru.job4j.collection.Job
- Этот класс имеет два поля: имя работы и приоритет исполнения.
- Наша задача написать для него сортировку по возрастанию по полю priority,
- а так же сделать сортировку по имени по возрастанию.
- Для этого мы в классе Job реализуем интерфейс java.util.Comparable<Job>
- В интерфейсе Comparable нужно указать обобщенный тип данных. В нашем случае это сам класс Job.
+    Задание
+1. Для модели ru.job4j.collection.Job создайте 4 компаратора:
+ - по имени и по возрастанию
+ - по приоритету и по возрастанию
+ - по имени и по убыванию
+ - по приоритету и по убыванию
+2. Напишите тесты, проверяющие отдельно поведение компараторов.
+3. Напишите тесты, проверяющие поведение комбинированных компараторов.
     */
     private String name;
     private int priority;
@@ -37,5 +41,19 @@ public class Job implements Comparable<Job> {
     public int compareTo(Job another) {
         return Integer.compare(priority, another.priority);
     }
-    // Теперь можно сделать сортировку в классе JobSorter
+
+    //Добавляем реализацию equals & hashCode
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Job job = (Job) o;
+        return priority == job.priority &&
+                Objects.equals(name, job.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, priority);
+    }
 }
