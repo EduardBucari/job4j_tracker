@@ -18,14 +18,21 @@ public class User implements Comparable<User> {
 
     // Для выполнения задания нужно реализовать метод compareTo
    // Он должен сравнить имена, если они равны, то сравнить возраст.
+    // Перед этим реализовать гетеры
+
+
+    public String getName() {
+        return name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
     @Override
     public int compareTo(User o) {
-        int nameCompare = this.name.compareTo(o.name);
-        if (nameCompare != 0) {
-            return this.age - o.age;
-        } else {
-            return nameCompare;
-        }
+        int nameCompare = name.compareTo(o.name);
+        return nameCompare == 0 ? Integer.compare(age, o.getAge()) : nameCompare;
     }
 
     //методы equals и hashCode нужны для тестов, где мы используем методы сравнения моделей user.equals
