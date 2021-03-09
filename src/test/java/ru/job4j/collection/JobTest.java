@@ -60,26 +60,19 @@ public class JobTest {
     }
 
 
-    //тесты для комбинированного компаратора
+    //Тест для комбинированного компаратора.
+    // Протестировать работу комбинированного компаратора так,
+    // чтобы отрабатывали обе его части - для этого первый компаратор должен вернуть 0,
+    // т.е. если первый компаратор сравнивает по имени, то имена должны быть одинаковыми.
     @Test
     public void whenComparatorByNameAndPriorityDescending() {
         Comparator<Job> cmpNamePriorityDes =
-                new JobSortByNameDescending().thenComparing(new JobSortByPriorityDescending());
+                new JobSortByNameDescending().
+                        thenComparing(new JobSortByPriorityDescending());
         int rsl = cmpNamePriorityDes.compare(
                 new Job("iii", 0),
-                new Job("fff", 1)
+                new Job("iii", 1)
         );
         assertThat(rsl, lessThan(0));
-    }
-
-    @Test
-    public void whenComparatorByNameAndPriorityAscending() {
-        Comparator<Job> cmpNamePriorityAsc =
-                new JobSortByNameAscending().thenComparing(new JobSortByPriorityAscending());
-        int rsl = cmpNamePriorityAsc.compare(
-                new Job("fff", 1),
-                new Job("iii", 0)
-        );
-        assertThat(rsl, lessThan(1));
     }
 }
