@@ -79,7 +79,7 @@ public class StartUITest {
        // Входные данные должны содержать ID добавленной заявки item.getId();
         String replacedName = "New item name";
         Input in = new StubInput(
-                new String[] {"0", "1"} // 0 - это входные параметры для ReplaceAction;
+                new String[] {"0", String.valueOf(item.getId()), replacedName, "1"} // 0 - это входные параметры для ReplaceAction;
         );
         UserAction[] action = {
                 new ReplaceAction(new StubOutput()),
@@ -94,7 +94,7 @@ public class StartUITest {
         Tracker tracker = new Tracker();
         Item item = tracker.add(new Item(2, "Deleted item")); //Добавим в tracker новую заявку.
         Input in = new StubInput(
-                new String[] {"0", "1"} // 0 - это входные параметры для DeleteAction;
+                new String[] {"0", "1", "1"} // 0 - это входные параметры для DeleteAction;
         );
         UserAction[] actions = {
                 new DeleteItemAction(new StubOutput()),
@@ -202,7 +202,7 @@ public class StartUITest {
                         + "Wrong input, you can select: 0 .. 0%n"
                         + "Menu.%n"
                         + "0. Exit%n"
-
+                        +"=== Exit ===%n"
                 )
         ));
 
