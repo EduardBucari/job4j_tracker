@@ -73,7 +73,7 @@ public class StartUI {
       //          System.out.println(rsl[i]);
         List<Item> rsl = tracker.findByName(orderNames);
         if (rsl.size() > 0) {
-            for ( Item i : rsl) {
+            for (Item i : rsl) {
                 System.out.println(i);
             }
         } else {
@@ -85,9 +85,10 @@ public class StartUI {
         System.out.println("=== Exit ===");
     }
 
-    private final Output out;
+    public final Output out;
+
     public StartUI(Output out) {
-        this.out =out;
+        this.out = out;
     }
 
     public void init(Input input, Tracker tracker, UserAction[] actions) {
@@ -105,9 +106,10 @@ public class StartUI {
             run = action.execute(input, tracker);
         }
     }
+
         private void showMenu(UserAction[] actions) {
             out.println("Menu.");
-            for(int index = 0; index < actions.length; index++) {
+            for (int index = 0; index < actions.length; index++) {
                 out.println(index + ". " + actions[index].name());
             }
         }

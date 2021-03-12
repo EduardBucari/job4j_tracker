@@ -20,7 +20,6 @@ public class User implements Comparable<User> {
    // Он должен сравнить имена, если они равны, то сравнить возраст.
     // Перед этим реализовать гетеры
 
-
     public String getName() {
         return name;
     }
@@ -35,14 +34,19 @@ public class User implements Comparable<User> {
         return nameCompare == 0 ? Integer.compare(age, o.getAge()) : nameCompare;
     }
 
-    //методы equals и hashCode нужны для тестов, где мы используем методы сравнения моделей user.equals
+    //методы equals и hashCode нужны для тестов, где мы используем
+    // методы сравнения моделей user.equals
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
         User user = (User) o;
-        return age == user.age &&
-                Objects.equals(name, user.name);
+        return age == user.age
+                && Objects.equals(name, user.name);
     }
 
     @Override

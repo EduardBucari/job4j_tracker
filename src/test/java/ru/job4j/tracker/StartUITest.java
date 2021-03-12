@@ -16,10 +16,8 @@ public class StartUITest {
         StartUI.createItem(input, tracker);
        // Item created = tracker.findAll()[0];
         Item created = tracker.findAll().get(0);
-        Item expected = new Item(0,"Fix PC");
+        Item expected = new Item(0, "Fix PC");
         assertThat(created.getName(), is(expected.getName()));
-
-
     }
  //------------------------------------------
   /*  @Test
@@ -79,7 +77,8 @@ public class StartUITest {
        // Входные данные должны содержать ID добавленной заявки item.getId();
         String replacedName = "New item name";
         Input in = new StubInput(
-                new String[] {"0", String.valueOf(item.getId()), replacedName, "1"} // 0 - это входные параметры для ReplaceAction;
+                new String[] {"0", String.valueOf(item.getId()), replacedName, "1"}
+                // 0 - это входные параметры для ReplaceAction;
         );
         UserAction[] action = {
                 new ReplaceAction(new StubOutput()),
@@ -202,7 +201,7 @@ public class StartUITest {
                         + "Wrong input, you can select: 0 .. 0%n"
                         + "Menu.%n"
                         + "0. Exit%n"
-                        +"=== Exit ===%n"
+                        + "=== Exit ===%n"
                 )
         ));
 

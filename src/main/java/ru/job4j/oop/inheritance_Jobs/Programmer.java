@@ -3,7 +3,6 @@ package ru.job4j.oop.inheritance_Jobs;
 public class Programmer extends Engineer {
     private String knowledgeOfTheProgrammingLanguage;
 
-
     public Programmer(String name, String surname, String birthday, String education,
                       String specializationCertificateID,
                       String knowledgeOfTheProgrammingLanguage) {
@@ -16,9 +15,9 @@ public class Programmer extends Engineer {
     }
 
     public static void main(String[] args) {
-        Programmer programmer = new Programmer("Tony","Stark", "11.03.63",
-                "higher", "IronMan 01",
-                "Java");
+        Programmer programmer = new Programmer("Tony", "Stark", "11.03.63",
+                 "higher", "IronMan 01",
+                 "Java");
         programmer.getName();
         programmer.getSurname();
         programmer.getBirthday();

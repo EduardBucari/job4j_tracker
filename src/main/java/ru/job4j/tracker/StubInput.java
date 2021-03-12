@@ -1,8 +1,8 @@
 package ru.job4j.tracker;
 
-public class StubInput implements Input{
+public class StubInput implements Input {
     // Проблема в том, что ввод данных осуществляет пользователь, а он может ввести что угодно.
-    //  доработаем данный класс, чтобы метод askStr возвращал параметры, которые мы хотим.
+    // доработаем данный класс, чтобы метод askStr возвращал параметры, которые мы хотим.
     private String[] answers;
     private int position = 0;
 

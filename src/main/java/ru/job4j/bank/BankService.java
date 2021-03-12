@@ -15,7 +15,6 @@ public class BankService {
     // Это поле содержит всех пользователей системы с привязанными к ним счетами.
       private Map<User, List<Account>> users = new HashMap<>();
 
-
      /* Чтобы добавить пользователя в систему нужно использовать метод Map.put
       Этот метод принимает два параметра: пользователя и список счетов.
       По умолчанию нужно добавить пустой список - new ArrayList<Account>().
@@ -28,8 +27,6 @@ public class BankService {
       public void deleteUser(User user) {
           this.users.remove(user);  // Удалять пользователя из системы.
       }
-
-
 
       /* Этот метод должен добавить новый счет к пользователю.
       Первоначально пользователя нужно найти по паспорту.
@@ -48,9 +45,10 @@ public class BankService {
           User user = findByPassport(passport);
           if (user != null) {
               List<Account> accounts = users.get(user);
-                  if (!accounts.contains(account)){
+                  if (!accounts.contains(account)) {
                       accounts.add(account);
                   }
+
           }
       }
 

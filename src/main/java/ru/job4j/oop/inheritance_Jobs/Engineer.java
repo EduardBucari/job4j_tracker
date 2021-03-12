@@ -14,8 +14,8 @@ public class Engineer extends Profession {
     }
 
     public static void main(String[] args) {
-        Engineer engineer = new Engineer("Peter", "Parker","5.04.99",
-                "technical", "electronic452-VD");
+        Engineer engineer = new Engineer("Peter", "Parker", "5.04.99",
+                 "technical", "electronic452-VD");
         engineer.getName();
         engineer.getSurname();
         engineer.getBirthday();

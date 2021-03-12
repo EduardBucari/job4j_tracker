@@ -10,7 +10,6 @@ public class Item implements Comparable<Item> {
     private String name;
     private LocalDateTime created = LocalDateTime.now();
 
-
     public Item(int id, String name) {
         this.id = id;
         this.name = name;
@@ -38,22 +37,29 @@ public class Item implements Comparable<Item> {
 
     @Override
     public String toString() {
-        return "Item{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", created=" + created +
-                '}';
+        return "Item{"
+                + "id="
+                + id
+                + ", name='"
+                + name + '\''
+                + ", created="
+                + created
+                + '}';
     }
 
 
     // для того, чтобы сравнить списки надо переопределить equals и hashcode для модели данных Item
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
         Item item = (Item) o;
-        return id == item.id &&
-                Objects.equals(name, item.name);
+        return id == item.id
+                && Objects.equals(name, item.name);
     }
 
     @Override

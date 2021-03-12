@@ -3,8 +3,7 @@ package ru.job4j.endavaTest;
 import java.util.*;
 // add additional imports if needed
 
-public class PalindromeChecker
-{
+public class PalindromeChecker {
     public List<Boolean> checkIfPalindromes(List<String> words) {
         throw new UnsupportedOperationException();
         //implement method here

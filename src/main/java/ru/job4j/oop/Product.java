@@ -12,6 +12,7 @@ public final class Product {
     public  int price() {
         return price - discount();
     }
+
     public int discount() {
         return 0;
     }

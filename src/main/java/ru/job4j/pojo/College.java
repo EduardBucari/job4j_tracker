@@ -7,8 +7,10 @@ public class College {
         student.setGroupNumber("MG-945");
         student.setEnterInstituteDate("september 1994.");
 
-        System.out.println(student.getNameSurname() + " was study in group: " +
-                student.getGroupNumber() + ", the Enter of Institute Date is " +
-                student.getEnterInstituteDate());
+        System.out.println(student.getNameSurname()
+                + " was study in group: "
+                + student.getGroupNumber()
+                + ", the Enter of Institute Date is "
+                + student.getEnterInstituteDate());
     }
 }

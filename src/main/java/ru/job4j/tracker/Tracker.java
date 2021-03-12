@@ -14,7 +14,6 @@ public final class Tracker {
    private final List<Item> items = new ArrayList<>();
     private int ids = 1;
 
-
     public  static Tracker getInstance() {
         if (instance == null) {
             instance = new Tracker();
@@ -80,7 +79,7 @@ public final class Tracker {
         if (rsl) {
     //        items[index] = item;
             item.setId(id);
-            items.set(index,item);
+            items.set(index, item);
         }
         return rsl;
     }

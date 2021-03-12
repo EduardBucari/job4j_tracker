@@ -7,5 +7,4 @@ public class FactTest {
     public void whenN_les0ThenFinish() {
         Fact.calc(-2);
     }
-
 }

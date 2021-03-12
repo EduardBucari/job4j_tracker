@@ -8,7 +8,8 @@ import static org.junit.Assert.assertThat;
 public class ValidateInputTest {
 
     @Test
-    public void whenInvalidInput() { // Тест whenInvalidInput проверяет ситуацию, когда пользователь ввел
+    public void whenInvalidInput() { // Тест whenInvalidInput проверяет ситуацию,
+                                     // когда пользователь ввел
                                      // сначала неверные данные, а потом верные.
         Output out = new StubOutput();
         Input in = new StubInput(

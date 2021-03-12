@@ -2,7 +2,6 @@ package ru.job4j.pojo;
 
 public class Library {
 
-
     public static void main(String[] args) {
         Book cleanCode = new Book("Clean code", 25);
         Book studyJava = new Book("Study Java", 53);

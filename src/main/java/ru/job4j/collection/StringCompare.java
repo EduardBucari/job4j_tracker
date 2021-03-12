@@ -2,7 +2,6 @@ package ru.job4j.collection;
 
 import java.util.Comparator;
 
-
 // Задача - Реализуйте класс ru.job4j.collection.StringCompare.
 // Необходимо реализовать поэлементное сравнение двух списков,
 // т.е. сравниваем элементы двух списков, находящихся на одних и тех же позициях

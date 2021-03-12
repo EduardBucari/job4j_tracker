@@ -48,7 +48,6 @@ public class JobTest {
         assertThat(jobs.get(0).getPriority(), is(1));
     }
 
-
     @Test
     public void compareByPriorityDescending() {
         List<Job> jobs = Arrays.asList(

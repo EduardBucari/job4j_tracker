@@ -19,6 +19,7 @@ package ru.job4j.oop;
         public void tryEat(Ball ball) {
         }
     }
+
 public class BallStory {
     public static void main(String[] args) {
         Ball ball = new Ball();

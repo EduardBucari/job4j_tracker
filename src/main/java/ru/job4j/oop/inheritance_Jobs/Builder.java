@@ -16,8 +16,8 @@ public class Builder extends Engineer {
 
     public static void main(String[] args) {
         Builder builder = new Builder("Hulk", "Incredible", "30.05.62",
-                "higher", "Marvel 5.62",
-                "Super Level");
+                 "higher", "Marvel 5.62",
+                 "Super Level");
         builder.getName();
         builder.getSurname();
         builder.getBirthday();

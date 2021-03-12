@@ -13,6 +13,7 @@ public class MaxFrom3And4 {
         int max = temp > temp2 ? temp : temp2;
         return max;
     }
+
      public static void main(String[] args) {
         int msg = MaxFrom3And4.max3(1, 2, 3);
         int msg2 = MaxFrom3And4.max4(1, 2, 3, 4);

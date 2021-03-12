@@ -10,14 +10,13 @@ public class Doctor extends Profession {
         this.diplomaID = diplomaID;
     }
 
-        public String getDiplomaID () {
+        public String getDiplomaID() {
           return diplomaID;
          }
 
-
     public static void main(String[] args) {
-        Doctor doctor = new Doctor("John", "Conor","22.01.90",
-                "higher","DRV 567");
+        Doctor doctor = new Doctor("John", "Conor", "22.01.90",
+                 "higher", "DRV 567");
 
         doctor.getName();
         doctor.getSurname();
