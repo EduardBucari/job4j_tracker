@@ -85,7 +85,7 @@ public class StartUI {
         System.out.println("=== Exit ===");
     }
 
-    public final Output out;
+    private final Output out;
 
     public StartUI(Output out) {
         this.out = out;
