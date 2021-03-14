@@ -5,8 +5,13 @@ import java.util.List;
 
 public class StartUI {
 
-    //заменим массивы на java.util.ArrayList.
+    private final Output out;
 
+    public StartUI(Output out) {
+        this.out = out;
+    }
+
+    //заменим массивы на java.util.ArrayList.
     public static void createItem(Input input, Tracker tracker) {
         System.out.println("=== Create a new Item ===");
         String name = input.askStr("Enter name: ");
@@ -83,12 +88,6 @@ public class StartUI {
 
     public static void exit(Input input, Tracker tracker) {
         System.out.println("=== Exit ===");
-    }
-
-    private final Output out;
-
-    public StartUI(Output out) {
-        this.out = out;
     }
 
     public void init(Input input, Tracker tracker, UserAction[] actions) {

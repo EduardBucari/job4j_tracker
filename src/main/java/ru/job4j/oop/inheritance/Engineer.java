@@ -1,4 +1,4 @@
-package ru.job4j.oop.inheritance_Jobs;
+package ru.job4j.oop.inheritance;
 
 public class Engineer extends Profession {
     private String specializationCertificateID;

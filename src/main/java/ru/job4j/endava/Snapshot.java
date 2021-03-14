@@ -1,4 +1,4 @@
-package ru.job4j.endavaTest;
+package ru.job4j.endava;
 
 import java.util.ArrayList;
 
