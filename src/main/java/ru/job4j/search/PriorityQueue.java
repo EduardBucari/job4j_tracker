@@ -2,41 +2,40 @@ package ru.job4j.search;
 
 import java.util.LinkedList;
 
+/**
+ * Класс описывает работу простейшей очереди по приоритету, которая работает
+ * по принципу FIFO (first in - first out)
+ * @author Eduard Bucari
+ * @version 1.0
+ */
 public class PriorityQueue {
-    private LinkedList<Task> tasks = new LinkedList<>();
-    /*
-     * Метод должен вставлять в нужную позицию элемент.
-     * Позиция определяется по полю приоритет.
-     * Для вставки использовать add(int index, E value)
-     * @param task задача
+    /**
+     * Хранение задания осуществляется в коллекции типа LinkedList
      */
+    private LinkedList<Task> tasks = new LinkedList<>();
 
-    // В методе put нужно найти index нужного элемента.
-    // Если элементов нет, тогда index будет равен 0.
-    // Если нужно вставить элемент в конец списка,
-    // тогда необходимо пройти по всем элементам,
-    // и индекс будет равен размеру всей коллекции.
-
+    /**
+     * Метод принимает на вход заявку и добавляет ее в очередь.
+     * Если встречаются 2 задания с одинаковым приоритетом, то в очереди
+     * они распределяются по принципу FIFO.
+     * @param task задача которая добавляется в очередь
+     */
    public void put(Task task) {
        int index = 0;
-
-       for (Task element : tasks) {
-            if (element.getPriority() > task.getPriority()) {
+       for (Task current : tasks) {
+            if (task.getPriority() < current.getPriority()) {
                break;
-               // Необходимо пройти циклом по tasks,
-                // сравнивая в if приоритет element с приоритетом task.
-               // Если приоритет больше у task, index увеличить на 1.
-                // Если приоритет больше у element,
-               // прервать цикл и по текущему индексу записать task в tasks.
              }
            index++;
        }
-       this.tasks.add(index, task);
+       tasks.add(index, task);
    }
 
-    //Метод take возвращает первый элемент из списка и удаляет его.
-    // Эти действия мы делаем через метод poll().
+    /**
+     * Метод позволяет получить первую задачу в очереди
+     * @return возвращает задачу из головы очереди или null если очередь пуста
+     */
    public Task take() {
-       return tasks.poll();
+       return this.tasks.poll();
    }
 }
