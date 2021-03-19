@@ -4,11 +4,8 @@ import java.util.Comparator;
 
 public class DepDescComp implements Comparator<String> {
     @Override
-    public int compare(String first, String second) {
-        return first.split("/")[0].equals(second.split("/")[0])
-                        ?
-                        first.compareTo(second)
-                        :
-                        second.compareTo(first);
+    public int compare(String o1, String o2) {
+        int result = o2.substring(0, 2).compareTo(o1.substring(0, 2));
+        return result != 0 ? result : o1.compareTo(o2);
     }
 }
