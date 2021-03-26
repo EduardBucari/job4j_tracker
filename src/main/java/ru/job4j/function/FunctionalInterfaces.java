@@ -1,5 +1,8 @@
 package ru.job4j.function;
 
+import com.sun.jdi.Value;
+
+import java.security.Key;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -9,7 +12,8 @@ import java.util.function.*;
 public class FunctionalInterfaces {
     public static void main(String[] args) {
         Map<Integer, String> map = new HashMap<>();
-        BiConsumer<Integer, String> biCon = (s, s1) -> System.out.println(s + s1);
+        BiConsumer<Integer, String> biCon = (s, s1) -> map.put(s, s1);
+        biCon.accept(1, "one");
         /*
             Замените вставку элементов в карту на использование BiConsumer, он уже объявлен, требуется его реализовать.
          */
@@ -21,19 +25,21 @@ public class FunctionalInterfaces {
         map.put(6, "six");
         map.put(7, "seven");
 
-        BiPredicate<Integer, String> biPred = (i, s) -> s.contains(i.toString());
+        BiPredicate<Integer, String> biPred = (i, s) -> map.containsKey(1);
         for (Integer i : map.keySet()) {
             /*
                 Замените проверку в if() на использование BiPredicate, он объявлен выше, требуется его реализовать.
              */
             if (i % 2 == 0 || map.get(i).length() == 4) {
-                System.out.println("key: " + i + " value: " + map.get(i));
+                System.out.println("key: " + i + " value: " + biPred.test(1, "0ne"));
             }
         }
         /*
             Заменить создание ArrayList из значений Map на Supplier, объявлен ниже, требуется его реализовать.
          */
-        Supplier<List<String>> sup = () -> new ArrayList<>();
+        Supplier<List<String>> sup = () -> new Map<>(map);
+        Map<> map1 = sup.get();
+
         List<String> strings = new ArrayList<>(map.values());
 
         Consumer<String> con = (s) -> System.out.println(s);
@@ -44,7 +50,7 @@ public class FunctionalInterfaces {
                 Заменить преобразование строк к строкам в верхнем регистре с помощью Function
                 Необходимое объявлено выше, требуется их реализовать.
             */
-            System.out.println(s.toUpperCase());
+            System.out.println(s);
         }
     }
 }
