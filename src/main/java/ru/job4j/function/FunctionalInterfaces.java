@@ -14,6 +14,12 @@ public class FunctionalInterfaces {
         Map<Integer, String> map = new HashMap<>();
         BiConsumer<Integer, String> biCon = (s, s1) -> map.put(s, s1);
         biCon.accept(1, "one");
+        biCon.accept(2, "two");
+        biCon.accept(3, "three");
+        biCon.accept(4, "four");
+        biCon.accept(5, "five");
+        biCon.accept(6, "six");
+        biCon.accept(7, "seven");
         /*
             Замените вставку элементов в карту на использование BiConsumer, он уже объявлен, требуется его реализовать.
          */
@@ -25,13 +31,13 @@ public class FunctionalInterfaces {
         map.put(6, "six");
         map.put(7, "seven");
 
-        BiPredicate<Integer, String> biPred = (i, s) -> map.containsKey(1);
+        BiPredicate<Integer, String> biPred = (i, s) -> ;
         for (Integer i : map.keySet()) {
             /*
                 Замените проверку в if() на использование BiPredicate, он объявлен выше, требуется его реализовать.
              */
             if (i % 2 == 0 || map.get(i).length() == 4) {
-                System.out.println("key: " + i + " value: " + biPred.test(1, "0ne"));
+                System.out.println("key: " + i + " value: " + map.get(i));
             }
         }
         /*
