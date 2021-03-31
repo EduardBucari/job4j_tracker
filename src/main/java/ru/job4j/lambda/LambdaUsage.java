@@ -22,8 +22,8 @@ public class LambdaUsage {
             Comparator<String> comparator = (s1, s2) -> {
                 System.out.println("After sort:");
                  return s1.length() - s2.length();
-                 books.sort(comparator.reversed());
             };
+        books.sort(comparator.reversed());
 
         for (String temp : books) {
             System.out.println(temp);
