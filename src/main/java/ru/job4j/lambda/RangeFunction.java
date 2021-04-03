@@ -15,6 +15,8 @@ import java.util.function.Function;
  *
  * Для перебора коллекции в цикле for необходимо учитывать первый и последний элемент,
  * поэтому используем индекс в диапозоне от i = start до i <= end;
+ *
+ * Реализовать функции в тестах через new RangeFunction().
  */
 public class RangeFunction {
     List<Double> diapason(int start, int end, Function<Double, Double> func) {
