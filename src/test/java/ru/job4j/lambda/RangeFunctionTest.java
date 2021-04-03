@@ -14,6 +14,7 @@ import static org.junit.Assert.*;
  *     - квадратичная (f(x) = ax2 + bx + c, где a, b и с — заданные числа);
  *     - показательная - математическая функция f(x)=a^x;
  */
+
 public class RangeFunctionTest {
 
     @Test

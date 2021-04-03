@@ -18,6 +18,7 @@ import java.util.function.Function;
  *
  * Реализовать функции в тестах через new RangeFunction().
  */
+
 public class RangeFunction {
     List<Double> diapason(int start, int end, Function<Double, Double> func) {
         List<Double> result = new ArrayList<>();
