@@ -1,44 +1,39 @@
 package ru.job4j.search;
 
-import java.security.PublicKey;
 import java.util.ArrayList;
+import java.util.function.Predicate;
 
-//составим модель справочника
+/**
+ * Каркас класса.
+ * Условие задания: Есть список абонентов. Нужно их отфильтровать по ключу.
+ * Метод поиска должен фильтровать все поля модели.
+ * Если изменится модель, то нам нужно будет дописать условия.
+ */
 public class PhoneDictionary {
     private ArrayList<Person> persons = new ArrayList<Person>();
 
     public void add(Person person) {
         this.persons.add(person);
     }
-    /*
-      Поиск мы должны осуществлять по всем полям через метод String.contains.
-      String contains()- метод чтобы проверить, содержит ли String указанную
-      последовательность символов.
-      Этот метод возвращает логический тип данных, который является результатом
-      тестирования.
-      Вернуть список всех пользователей, который содержат key в любых полях.
-      @param key Ключ поиска.
-      @return Список подощедщих пользователей.
+
+    /**
+     * Метод поиска по ключу.
+     * Дописать метод find с использованием функции высшего порядка.
+     * Применим функциональный интерфейс java.util.function.Predicate и метода or.
+     * @param key отфильтровать список абонетов по данному ключу пользователя.
+     * @return вернуть список соответствующих пользователей.
      */
-   /*
-   Чтобы узнать, есть в массиве какой-либо элемент, можно воспользоваться методом contains(),
-   который вернёт true или false". В List "элемент" - это строка!
-   циклом for () происходит перебор массива на составляющие элементы.
-   В данном случае на строки (тип String). Т.е. в оператор сравнения уже попадает строка.
-   А уже у строк есть метод contains, который ищет в ней символы.
-   */
-
     public ArrayList<Person> find(String key) {
-        ArrayList<Person> result = new ArrayList<>();
+        Predicate<Person> name = person -> person.getName().contains(key);
+        Predicate<Person> surname = person -> person.getSurname().contains(key);
+        Predicate<Person> address = person -> person.getAddress().contains(key);
+        Predicate<Person> phone = person -> person.getPhone().contains(key);
+        Predicate<Person> compound = name.or(surname).or(address).or(phone);
 
-        for (Person p : persons) {
-            //тип поставим Person и в цикле вызываем гетеры у персона и
-            // проверяем на совпадение с ключом
-           if (p.getName().contains(key)
-                   || p.getSurname().contains(key)
-                   || p.getPhone().contains(key)
-                   || p.getAddress().contains(key)) {
-                result.add(p);      // добавить Person в список
+        ArrayList<Person> result = new ArrayList<>();
+        for (Person person : persons) {
+            if (compound.test(person)) {
+                result.add(person);
             }
         }
         return result;

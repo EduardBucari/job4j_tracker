@@ -1,6 +1,9 @@
 package ru.job4j.search;
 
-//напишем программу поиска в списке.
+/**
+ * Модель данных к заданию "Телефонный справочник".
+ */
+
 public class Person {
     private String name;
     private String surname;
