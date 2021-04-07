@@ -11,10 +11,20 @@ import java.util.Arrays;
  *   чтобы в нем остались только положительные числа.
  * 3. Отфильтрованный поток запишите в List.
  */
-public class StreamTask {
+public class StreamApi {
     public static void main(String[] args) {
-        List<Integer> numbers = Arrays.asList(11, 3, -20, 18, 30, 5, -19, 77);
-        List<Integer> result = numbers.stream().filter(number -> number > 0)
+        List<Integer> numbers = Arrays.asList(
+                11,
+                3,
+                -20,
+                18,
+                30,
+                5,
+                -19,
+                77
+        );
+        List<Integer> result = numbers.stream()
+                .filter(number -> number > 0)
                 .collect(Collectors.toList());
         System.out.println(result);
     }
