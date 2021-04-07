@@ -6,7 +6,7 @@ import java.util.List;
  * Задание.
  * 1. Произведите рефакторинг кода по принципу строка занимает 80 символов.
  * 2. Проанализируйте следующий код. Найдите в нем ошибку.
- * Программа должна выводить задачи имя которых "Bug" и значение scope > 30.
+ * Программа должна выводить задачи имя которых "Bug" и значение spent > 30.
  */
 
 public class StreamUsage {
@@ -26,6 +26,10 @@ public class StreamUsage {
                 new Task("Bug #2", 20),
                 new Task("Bug #3", 40)
         );
-        tasks.stream().filter(task -> task.name.contains("Bug")).filter(task -> task.spent == 30).map(task -> task.name + " " + task.spent).forEach(System.out::println);
+        tasks.stream()
+                .filter(task -> task.name.contains("Bug"))
+                .filter(task -> task.spent > 30)
+                .map(task -> task.name + " " + task.spent)
+                .forEach(System.out::println);
     }
 }
