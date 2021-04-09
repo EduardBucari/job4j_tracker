@@ -12,7 +12,7 @@ import java.util.stream.Collectors;
  * В класс Profiles создать метод List^Address> collect(List^Profile> profiles);
  * При решении задания нужно использовать:
  * - Stream API,
- * - метод map,
+ * - метод map, (в map() делаем преобразование из одного типа в другой);
  * - метод collect(Collectors.toList());
  *
  * Метод Stream.map - принимает элемент потока и возвращает другой элемент,
@@ -21,16 +21,13 @@ import java.util.stream.Collectors;
  * Исходя из этого импортируем следующие утилиты:
  * List, function.Function, stream.Collectors;
  *
- * Написать тесты на метод, который реализовали.
+ * Написать тесты на метод, который реализовали по аналогии с прошлым заданием.
  */
 
 public class Profiles {
-    public List<Address> collect(
-            List<Profile> profiles,
-            Function<Profile, Address> profileAddressFunction
-    ) {
+    public List<Address> collect(List<Profile> profiles) {
         return profiles.stream()
-                .map(profileAddressFunction)
+                .map(Profile::getAddress)
                 .collect(Collectors.toList());
     }
 }
