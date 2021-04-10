@@ -1,33 +1,33 @@
 package ru.job4j.stream;
 
 import java.util.List;
-import java.util.function.Function;
 import java.util.stream.Collectors;
 
 /**
  * Задача - составить список адресов клиентов.
- * В решении должно быть 3 класса: 2 модели Address и Profile
- * и данный класс с логикой - Profiles.
- *
- * В класс Profiles создать метод List^Address> collect(List^Profile> profiles);
- * При решении задания нужно использовать:
- * - Stream API,
- * - метод map, (в map() делаем преобразование из одного типа в другой);
- * - метод collect(Collectors.toList());
- *
- * Метод Stream.map - принимает элемент потока и возвращает другой элемент,
- * т.е. используем функциональный интерфейс Function^T,R>.
- *
- * Исходя из этого импортируем следующие утилиты:
- * List, function.Function, stream.Collectors;
- *
- * Написать тесты на метод, который реализовали по аналогии с прошлым заданием.
+ * В задании про список адресов пришло новое требование:
+ * 1. Так как часть людей живет по одному и тому же адресу,
+ * нужно в списке клиентов оставить только уникальные элементы
+ * используя метод distinct(), (distinct() позволяет убрать дублирующие элементы).
+ * 2. Для быстрого поиска по адресам, список нужно отсортировать по полю String city.
+ * Для сортировки нужно использовать метод sorted(Comparator^Address>()).
+ * 3. Чтобы сравнить объекты класса Address,
+ * нужно в классе Address определить два методы equals и hashCode.
+ * 4. Написать тесты для проверки публичных методов.
  */
 
 public class Profiles {
     public List<Address> collect(List<Profile> profiles) {
         return profiles.stream()
                 .map(Profile::getAddress)
+                .collect(Collectors.toList());
+    }
+
+    public List<Address> distinct(List<Profile> profiles) {
+        return profiles.stream()
+                .map(Profile::getAddress)
+                .sorted(((o1, o2) -> o1.getCity().compareTo(o2.toString())))
+                .distinct()
                 .collect(Collectors.toList());
     }
 }

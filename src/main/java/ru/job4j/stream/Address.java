@@ -1,5 +1,7 @@
 package ru.job4j.stream;
 
+import java.util.Objects;
+
 /**
  * Модель данных:
  * Задача - составить список адресов клиентов.
@@ -35,5 +37,28 @@ public class Address {
 
     public int getApartment() {
         return apartment;
+    }
+
+    //Чтобы сравнить объекты класса Address,
+    // нужно в классе Address определить два методы equals и hashCode.
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Address address = (Address) o;
+        return home == address.home
+                && apartment == address.apartment
+                && Objects.equals(city, address.city)
+                && Objects.equals(street, address.street);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(city, street, home, apartment);
     }
 }
