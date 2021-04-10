@@ -4,7 +4,6 @@ import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.function.Function;
 
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.*;
@@ -22,7 +21,6 @@ public class ProfilesTest {
         profiles.add(new Profile(addresses.get(0)));
         profiles.add(new Profile(addresses.get(1)));
         profiles.add(new Profile(addresses.get(2)));
-        Function<Profile, Address> profileAddressFunction = profile -> profile.getAddress();
         List<Address> result = new Profiles().collect(profiles);
         assertThat(result, is(addresses));
     }
