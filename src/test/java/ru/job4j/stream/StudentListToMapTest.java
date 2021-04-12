@@ -19,7 +19,7 @@ public class StudentListToMapTest {
                 new Student(40, "Victor"),
                 new Student(80, "David")
         );
-        Map<Integer, Student> result = new StudentListToMap().listToMap(students);
+        Map<String, Student> result = new StudentListToMap().listToMap(students);
         assertThat(result.size(), is(3));
     }
 }

@@ -10,8 +10,8 @@ import java.util.stream.Collectors;
  *    использовать класс Student из задания "Фильтрация учеников".
  * 2. Преобразовать список учеников в Map.
  *    Для этого нужно использовать collect c аргументом Collectors.toMap.
- * 3. В качестве ключа использовать фамилию ученика.
- * 4. В качестве значение использовать объект ученика.
+ * 3. В качестве ключа использовать фамилию ученика(String).
+ * 4. В качестве значение использовать объект ученика(Student).
  * 5. Реализуйте следующую логику:
  *    Collectors.toMap(
  *         e -> e,
@@ -21,7 +21,7 @@ import java.util.stream.Collectors;
  *    Важно! В исходном списке должны содержаться дубликаты.
  */
 public class StudentListToMap {
-    public Map listToMap(List<Student> students) {
+    public Map<String, Student> listToMap(List<Student> students) {
         return students.stream()
                 .collect(Collectors.toMap(
                         student -> student.getSurname(),
