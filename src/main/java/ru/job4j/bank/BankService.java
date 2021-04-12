@@ -13,6 +13,8 @@ import java.util.Map;
  * 3 Добавлять пользователю банковский счет. (У пользователя системы могут быть несколько счетов).
  * 4 Поиск пользователя по паспорту.
  * 5 Переводить деньги с одного банковского счета на другой счет.
+ * 6 В задаче Банковские переводы из модуля Коллекции Lite и переделать методы поиска по паспорту
+ *   и реквизитам на использование вместо циклов - Stream API.
  * @author Eduard Bucari
  * @version 1.0
  */
@@ -69,22 +71,25 @@ public class BankService {
 
     /**
      * Этот метод ищет пользователя по номеру паспорта.
+     * - Переделать метод поиска по паспорту,
+     *   вместо циклов пишем Stream API.
      * @param passport для этого нужно использовать перебор всех элементов
      *                 через цикл for-each и метод Map.keySet
      * @return возвращает пользователя или null если пользователь не найден.
      */
       public User findByPassport(String passport) {
-          for (User user : users.keySet()) {
-              if (user.getPassport().equals(passport)) {
-                   return user;
-              }
-          }
-          return null;
+          return users.keySet()
+                  .stream()
+                  .filter(key -> key.getPassport().equals(passport))
+                  .findFirst()
+                  .orElse(null);
       }
 
     /**
      * Этот метод ищет счет пользователя по реквизитам. Сначала нужно найти пользователя.
      *       Потом получить список счетов этого пользователя и в нем найти нужный счет.
+     *  - Переделать метод поиска по реквизитам,
+     *     вместо циклов пишем Stream API.
      * @param passport - поиск пользователя по паспорту, с помощью метода findByPassport
      * @param requisite - поиск по реквизитам, проверяем найденного пользователя на null,
      *   если не null - получаем список аккаунтов с помощью get() из карты
@@ -99,12 +104,11 @@ public class BankService {
           User user = findByPassport(passport);
             if (user != null) {
                 List<Account> accounts = users.get(user);
-
-                for (Account account  : accounts) {
-                   if (requisite.equals(account.getRequisite())) {
-                       return account;
-                   }
-                }
+                return accounts
+                        .stream()
+                        .filter(a -> a.getRequisite().equals(requisite))
+                        .findFirst()
+                        .orElse(null);
             }
           return null;
       }
