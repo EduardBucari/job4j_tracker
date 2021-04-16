@@ -9,9 +9,12 @@ import static org.junit.Assert.assertThat;
 public class PhoneDictionaryTest {
     @Test
     public void whenFindByName() {
-        PhoneDictionary phones = new PhoneDictionary();
-        phones.add(
-                new Person("Petr", "Arsentev", "534872", "Bryansk")
+        var phones = new PhoneDictionary();
+        phones.add(new Person(
+                "Petr",
+                "Arsentev",
+                "534872",
+                "Bryansk")
         );
         ArrayList<Person> persons = phones.find("Bryansk");
         assertThat(persons.get(0).getSurname(), is("Arsentev"));
