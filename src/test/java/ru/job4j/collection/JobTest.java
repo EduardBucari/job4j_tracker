@@ -2,12 +2,10 @@ package ru.job4j.collection;
 
 import org.junit.Test;
 
-import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 
 import static org.hamcrest.Matchers.greaterThan;
-import static org.hamcrest.Matchers.lessThan;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 
@@ -16,7 +14,7 @@ public class JobTest {
     // Тесты сортировки по имени(по возрастанию и по убыванию):
     @Test
     public void compareByNameAscending() {
-        List<Job> jobs = Arrays.asList(
+        List<Job> jobs = List.of(
                 new Job("ccc", 3),
                 new Job("aaa", 1),
                 new Job("bbb", 2)
@@ -27,7 +25,7 @@ public class JobTest {
 
     @Test
     public void compareByNameDescending() {
-        List<Job> jobs = Arrays.asList(
+        List<Job> jobs = List.of(
                 new Job("ccc", 3),
                 new Job("aaa", 1),
                 new Job("bbb", 2)
@@ -39,7 +37,7 @@ public class JobTest {
     // Тесты сортировки по приоритету (по возрастанию и по убыванию):
     @Test
     public void compareByPriorityAscending() {
-        List<Job> jobs = Arrays.asList(
+        List<Job> jobs = List.of(
                 new Job("ccc", 3),
                 new Job("aaa", 1),
                 new Job("bbb", 2)
@@ -50,7 +48,7 @@ public class JobTest {
 
     @Test
     public void compareByPriorityDescending() {
-        List<Job> jobs = Arrays.asList(
+        List<Job> jobs = List.of(
                 new Job("ccc", 3),
                 new Job("aaa", 1),
                 new Job("bbb", 2)
