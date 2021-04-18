@@ -1,6 +1,7 @@
 package ru.job4j.map;
 
 import java.util.Map;
+import java.util.Optional;
 import java.util.Set;
 
 /**
@@ -18,29 +19,30 @@ import java.util.Set;
  */
 public class College {
     private final Map<Student, Set<Subject>> students;
+
     public College(Map<Student, Set<Subject>> students) {
         this.students = students;
     }
 
-    public Student findByAccount(String account) {
-        Student rsl = null;
+    public Optional<Student> findByAccount(String account) {
+        Optional<Student> rsl = Optional.empty();
         for (Student s : students.keySet()) {
-            if (account.equals(s.getAccount())) {
-                rsl = s;
+            if (s.getAccount().equals(account)) {
+                rsl = Optional.of(s);
                 break;
             }
         }
         return rsl;
     }
 
-    public Subject findBySubjectName(String account, String name) {
-        Subject rsl = null;
+    public Optional<Subject> findBySubjectName(String account, String name) {
+        Optional<Subject> rsl = Optional.empty();
         Student s = findByAccount(account);
         if (s != null) {
             Set<Subject> subjects = students.get(s);
             for (Subject subj : subjects) {
-                if (name.equals((subj.getName()))) {
-                    rsl = subj;
+                if (subj.getName().equals(name)) {
+                    rsl = Optional.of(subj);
                     break;
                 }
             }
