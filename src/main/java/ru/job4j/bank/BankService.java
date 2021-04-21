@@ -1,9 +1,6 @@
 package ru.job4j.bank;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Класс описывает создание хэш-карты на основе пользователя в качестве ключа и список.
@@ -15,6 +12,28 @@ import java.util.Map;
  * 5 Переводить деньги с одного банковского счета на другой счет.
  * 6 В задаче Банковские переводы из модуля Коллекции Lite и переделать методы поиска по паспорту
  *   и реквизитам на использование вместо циклов - Stream API.
+ *
+ * 7 Задание.
+ *   Поправьте методы поиска элементов в задании "Банковские переводы".
+ *   Метод должны использовать Stream API и вернуть Optional.
+ *   Обратите внимание, что метод findFirst() возвращает тип Optional.
+ *
+ *   Терминальные методы поиска в Stream API возвращают объект Optional.
+ *   Методы поиска могут вернуть null. C null объектом в потоке данных работать уже нельзя,
+ *   поэтому все null оборачиваются в Optional.
+ *   Метод findFirst вернет первый элемент отфильтрованного потока.
+ *   Если отфильтрованный поток пустой, то нужно вернуть null.
+ *   Поэтому здесь используется Optional.
+ *
+ *   Объект Optional предупреждает программиста, что метод может вернуть null
+ *   и нужно добавить проверку, что объект не null-ссылка.
+ *   Чтобы проверить, что объект не null используйте метод if (opt.isPresent())
+ *   Чтобы получить значение этого объекта, используйте метод opt.get()
+ *
+ *   Метод .get() добавить в тестах BankServiceTest:
+ *    в тесте addAccount() добавим get().getBalance()
+ *    и в тесте transferMoney() добавим get().getBalance()
+ *
  * @author Eduard Bucari
  * @version 1.0
  */
@@ -32,7 +51,7 @@ public class BankService {
      * еще нет в системе. Если он есть, то нового добавлять не надо.
      */
     public void addUser(User user) {
-          this.users.putIfAbsent(user, new ArrayList<>());
+          this.users.putIfAbsent(user, new ArrayList<Account>());
       }
 
     /**
@@ -59,13 +78,12 @@ public class BankService {
      *       необходимый аккаунт с помощью метода add()
      */
       public void addAccount(String passport, Account account) {
-          User user = findByPassport(passport);
-          if (user != null) {
-              List<Account> accounts = users.get(user);
+          Optional<User> user = findByPassport(passport);
+          if (user.isPresent()) {
+              List<Account> accounts = users.get(user.get());
                   if (!accounts.contains(account)) {
                       accounts.add(account);
                   }
-
           }
       }
 
@@ -77,17 +95,17 @@ public class BankService {
      *                 через цикл for-each и метод Map.keySet
      * @return возвращает пользователя или null если пользователь не найден.
      */
-      public User findByPassport(String passport) {
+      public Optional<User> findByPassport(String passport) {
           return users.keySet()
                   .stream()
                   .filter(key -> key.getPassport().equals(passport))
-                  .findFirst()
-                  .orElse(null);
+                  .findFirst();
       }
 
     /**
-     * Этот метод ищет счет пользователя по реквизитам. Сначала нужно найти пользователя.
-     *       Потом получить список счетов этого пользователя и в нем найти нужный счет.
+     * Этот метод ищет счет пользователя по реквизитам.
+     * Сначала нужно найти пользователя.
+     * Потом получить список счетов этого пользователя и в нем найти нужный счет.
      *  - Переделать метод поиска по реквизитам,
      *     вместо циклов пишем Stream API.
      * @param passport - поиск пользователя по паспорту, с помощью метода findByPassport
@@ -100,17 +118,17 @@ public class BankService {
      *    Внутри цикла должна быть проверка поля requisite у аккаунта.
      * @return нашли совпадение и вернули этот аккунт, если ничего не нашли - возвращаем null
      */
-      public Account findByRequisite(String passport, String requisite) {
-          User user = findByPassport(passport);
-            if (user != null) {
-                List<Account> accounts = users.get(user);
+      public Optional<Account> findByRequisite(String passport, String requisite) {
+          Optional<User> user = findByPassport(passport);
+            if (user.isPresent()) {
+                List<Account> accounts = users.get(user.get());
                 return accounts
                         .stream()
                         .filter(a -> a.getRequisite().equals(requisite))
-                        .findFirst()
-                        .orElse(null);
+                        .findFirst();
+            } else {
+                return Optional.empty();
             }
-          return null;
       }
 
       /*Метод для перечисления денег с одного счёта на другой счёт.
@@ -130,11 +148,12 @@ public class BankService {
       public boolean transferMoney(String srcPassport, String srcRequisite,
                                    String destPassport, String destRequisite, double amount) {
           boolean rsl = false;
-          Account srcAccount = findByRequisite(srcPassport, srcRequisite);
-          Account destAccount = findByRequisite(destPassport, destRequisite);
-          if (srcAccount != null && destAccount != null && srcAccount.getBalance() >= amount) {
-              srcAccount.setBalance(srcAccount.getBalance() - amount);
-              destAccount.setBalance(destAccount.getBalance() + amount);
+          Optional<Account> srcAccount = findByRequisite(srcPassport, srcRequisite);
+          Optional<Account> destAccount = findByRequisite(destPassport, destRequisite);
+          if (srcAccount.isPresent() && destAccount.isPresent()
+                  && srcAccount.get().getBalance() >= amount) {
+              srcAccount.get().setBalance(srcAccount.get().getBalance() - amount);
+              destAccount.get().setBalance(destAccount.get().getBalance() + amount);
               rsl = true;
           }
           return rsl;
