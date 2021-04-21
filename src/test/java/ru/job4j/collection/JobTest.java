@@ -12,6 +12,7 @@ import static org.junit.Assert.assertThat;
 public class JobTest {
 
     // Тесты сортировки по имени(по возрастанию и по убыванию):
+
     @Test
     public void compareByNameAscending() {
         List<Job> jobs = List.of(
