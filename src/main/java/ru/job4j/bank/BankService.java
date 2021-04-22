@@ -126,9 +126,8 @@ public class BankService {
                         .stream()
                         .filter(a -> a.getRequisite().equals(requisite))
                         .findFirst();
-            } else {
-                return Optional.empty();
             }
+          return Optional.empty();
       }
 
       /*Метод для перечисления денег с одного счёта на другой счёт.
